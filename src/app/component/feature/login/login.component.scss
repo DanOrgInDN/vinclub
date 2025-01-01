@@ -1,12 +1,12 @@
 .background {
-    background-image: url('../../../assets/images/app_background.png');
+    background-image: url('../../../../assets/images/app_background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
     max-width: 750px;
     margin: 0 auto;
-    height: 100vh;
+    height: calc(100% - 96px);
     position: relative;
 }
 

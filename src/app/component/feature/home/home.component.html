@@ -1,26 +1,264 @@
-<!-- <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center background">
-    <div class="card login-card">
-        <div class="card-body text-center p-2">
-            <div class="font-wc">Chào mừng bạn đến với VinClub !</div>
-            <div class="font-wc-1 mb-2">Hy vọng bạn sẽ có trải nghiệm tuyệt vời.</div>
-            <div class="text-muted-1 mb-2">Cổng thông tin nội bộ VINGROUP</div>
-
-            <form>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nhập tài khoản">
-                </div>
-                <div class="mb-4">
-                    <input type="password" class="form-control" placeholder="Nhập mật khẩu">
-                </div>
-                <button type="submit" class="btn btn-warning w-100 mb-3">Đăng nhập</button>
-
-                <div class="text-start">
-                    <span class="text-muted font-weight-bold">Chưa có tài khoản? </span>
-                    <a href="#" class="text-warning tx-c text-decoration-none">Đăng ký ngay</a>
-                    <span class="mx-2">|</span>
-                    <a href="#" class="text-warning tx-c text-decoration-none">Dịch vụ CSKH</a>
-                </div>
-            </form>
+<div class="page-container">
+    <div class="background-image">
+        <!-- Nút đăng xuất -->
+        <div>
+            <div class="image-container">
+                <img src="assets/icons/logo_trans.png" class="logo" alt="icon">
+            </div>
+            <button class="logout-btn">
+                <img src="assets/icons/ic_exit.png"  alt="icon">
+            </button>
         </div>
+
+        <!-- Thông tin user -->
+        <div class="user-info-container">
+            <img src="assets/icons/vin-icon.png" class="icon-top-right" alt="icon">
+            
+            <div class="user-info-content">
+                <div class="user-info-header">
+                    <div class="user-avatar-group">
+                        <img src="assets/icons/user.png" class="user-avatar" alt="user">
+                        <span class="username">0978699931</span>
+                    </div>
+                    <div class="balance">Số dư: 0 VND</div>
+                </div>
+
+                <div class="menu-button-wrapper">
+                    <div class="menu-buttons">
+                        <a href="/vinclub/records" class="menu-btn">
+                            <img src="assets/icons/history.png" alt="icon">
+                            <span>Lịch sử giao dịch</span>
+                        </a>
+                        <a href="/cskh" class="menu-btn">
+                            <img src="assets/icons/cskh.png" alt="icon">
+                            <span>Dịch vụ CSKH</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid menu -->
+        <div class="grid-menu">
+            <a href="/vinclub/welfare" class="menu-item">
+                <div class="menu-content">
+                    <img src="assets/icons/tham-van.png" class="menu-icon" alt="icon">
+                    <div class="menu-text">Tham vấn phúc lợi</div>
+                </div>
+            </a>
+            <a href="/vinclub/award" class="menu-item">
+                <div class="menu-content">
+                    <img src="assets/icons/uu-dai.png" class="menu-icon" alt="icon">
+                    <div class="menu-text">Ưu đãi phúc lợi</div>
+                </div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-content">
+                    <img src="assets/icons/muc-tieu.png" class="menu-icon" alt="icon">
+                    <div class="menu-text">Mục tiêu</div>
+                </div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-content">
+                    <img src="assets/icons/san-pham.png" class="menu-icon" alt="icon">
+                    <div class="menu-text">Sản phẩm</div>
+                </div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-content">
+                    <img src="assets/icons/mat-khau.png" class="menu-icon" alt="icon">
+                    <div class="menu-text">Thay đổi mật khẩu</div>
+                </div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-content">
+                    <img src="assets/icons/ho-so.png" class="menu-icon" alt="icon">
+                    <div class="menu-text">Hồ sơ lợi nhuận</div>
+                </div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-content">
+                    <img src="assets/icons/ca-nhan.png" class="menu-icon" alt="icon">
+                    <div class="menu-text">Cá nhân</div>
+                </div>
+            </a>
+            <a href="#" class="menu-item">
+                <div class="menu-content">
+                    <img src="assets/icons/ly-do.png" class="menu-icon" alt="icon">
+                    <div class="menu-text">Lý do nên đầu tư</div>
+                </div>
+            </a>
+        </div>
+
+        <a href="/vinclub/news" class="news-title"><div data-v-e9bc9766="" class="seciton-title">Tin tức</div></a>
+
+        <div class="seciton-title mt-2">THƯƠNG HIỆU ĐỒNG HÀNH</div>
+
+        <div class="brand-section">
+            <div class="brand-container">
+                <div class="brand-slider">
+                    <swiper-container 
+                        slides-per-view="2"
+                        space-between="10"
+                        loop="true"
+                        autoplay="true"
+                        breakpoints='{
+                            "768": {
+                                "slidesPerView": 3
+                            }
+                        }'
+                    >
+                        <swiper-slide>
+                            <div class="slide-content">
+                                <img src="assets/logo/1.png" alt="brand">
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="slide-content">
+                                <img src="assets/logo/2.png" alt="brand">
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="slide-content">
+                                <img src="assets/logo/3.png" alt="brand">
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="slide-content">
+                                <img src="assets/logo/4.png" alt="brand">
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="slide-content">
+                                <img src="assets/logo/5.png" alt="brand">
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="slide-content">
+                                <img src="assets/logo/6.png" alt="brand">
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="slide-content">
+                                <img src="assets/logo/7.png" alt="brand">
+                            </div>
+                        </swiper-slide>
+                    </swiper-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="seciton-title">LĨNH VỰC TIÊN PHONG</div>
+
+        <div class="pioneer-section">
+            <div class="pioneer-container">
+                <swiper-container 
+                    slides-per-view="1"
+                    navigation="true"
+                    autoplay="true"
+                    loop="true"
+                >
+                    <swiper-slide>
+                        <div class="slide-content">
+                            <div class="card">
+                                <div class="card-overlay"></div>
+                                <div class="card-header">
+                                    <div class="icon-wrapper">
+                                        <img src="assets/logo/ico-cate-1.png" class="icon default" alt="">
+                                        <img src="assets/logo/ico-cate-1-hv.png" class="icon hover" alt="">
+                                    </div>
+                                    <div class="header-line"></div>
+                                </div>
+                                <div class="card-title">
+                                    Công nghệ<br> - Công nghiệp
+                                </div>
+                                <div class="card-image">
+                                    <img src="assets/images/carousel/img1.png" alt="">
+                                </div>
+                                <div class="card-description">
+                                    Quỹ nội bộ đầu tư vào công nghệ qua VinAI, mở rộng thương mại với VinMart và Vincom, hỗ trợ thiện nguyện qua Quỹ thiện tâm, và phát triển bất động sản với VinHomes và VinCity.
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+
+                    <swiper-slide>
+                        <div class="slide-content">
+                            <div class="card">
+                                <div class="card-overlay"></div>
+                                <div class="card-header">
+                                    <div class="icon-wrapper">
+                                        <img src="assets/logo/ico-cate-2.png" class="icon default" alt="">
+                                        <img src="assets/logo/ico-cate-2-hv.png" class="icon hover" alt="">
+                                    </div>
+                                    <div class="header-line"></div>
+                                </div>
+                                <div class="card-title">
+                                    Thương mại<br>Dịch vụ
+                                </div>
+                                <div class="card-image">
+                                    <img src="assets/images/carousel/img2.png" alt="">
+                                </div>
+                                <div class="card-description">
+                                    Vingroup phát triển thương mại dịch vụ qua các công ty con như VinMart, VinMart+, VinID, VinPro và Vinpearl, cung cấp đa dạng sản phẩm và dịch vụ, mang đến trải nghiệm mua sắm và giải trí tiện lợi cho khách hàng.
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+
+                    <swiper-slide>
+                        <div class="slide-content">
+                            <div class="card">
+                                <div class="card-overlay"></div>
+                                <div class="card-header">
+                                    <div class="icon-wrapper">
+                                        <img src="assets/logo/ico-cate-3.png" class="icon default" alt="">
+                                        <img src="assets/logo/ico-cate-3-hv.png" class="icon hover" alt="">
+                                    </div>
+                                    <div class="header-line"></div>
+                                </div>
+                                <div class="card-title">
+                                    Thiện nguyện<br>Xã hội
+                                </div>
+                                <div class="card-image">
+                                    <img src="assets/images/carousel/img3.png" alt="">
+                                </div>
+                                <div class="card-description">
+                                    Vingroup thực hiện các hoạt động thiện nguyện thông qua Quỹ thiện tâm, hỗ trợ giáo dục, y tế và các dự án cộng đồng nhằm nâng cao chất lượng cuộc sống.
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+
+                    <!-- Slide 4 -->
+                    <swiper-slide>
+                        <div class="slide-content">
+                            <div class="card">
+                                <div class="card-overlay"></div>
+                                <div class="card-header">
+                                    <div class="icon-wrapper">
+                                        <img src="assets/logo/ico-cate-4.png" class="icon default" alt="">
+                                        <img src="assets/logo/ico-cate-4-hv.png" class="icon hover" alt="">
+                                    </div>
+                                    <div class="header-line"></div>
+                                </div>
+                                <div class="card-title">
+                                    Hạng mục<br>Đầu tư
+                                </div>
+                                <div class="card-image">
+                                    <img src="assets/images/carousel/img4.png" alt="">
+                                </div>
+                                <div class="card-description">
+                                    Quỹ nội bộ đầu tư vào công nghệ qua VinAI, mở rộng thương mại với VinMart và Vincom, hỗ trợ thiện nguyện qua Quỹ thiện tâm, và phát triển bất động sản với VinHomes và VinCity.
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                </swiper-container>
+            </div>
+        </div>
+
+        <!-- Bottom navigation -->
+        <app-nav></app-nav>
     </div>
-</div> -->
+</div>
