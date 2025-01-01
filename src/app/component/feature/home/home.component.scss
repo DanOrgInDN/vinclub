@@ -1,0 +1,144 @@
+.background {
+    background-image: url('../../../assets/images/app_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    height: 100vh;
+    position: relative;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px;
+}
+
+.form-control {
+    height: 45px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    &::placeholder {
+        color: #666;
+    }
+
+    &:focus {
+        box-shadow: none;
+        border-color: #ffc107;
+    }
+}
+
+.btn-warning {
+    height: 45px;
+    font-weight: 600;
+    font-size: 1.325rem;
+    color: #FFF;
+    background-color: rgb(221 166 15 / 1);
+
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+.card-body {
+    .font-wc {
+        font-weight: 700;
+        font-size: 1.225rem;
+        line-height: 1.75rem;
+    }
+
+    .font-wc-1 {
+        font-weight: 700 !important;
+        font-size: 0.975rem;
+        line-height: 1.25rem;
+    }
+
+    .text-muted-1 {
+        font-weight: 700;
+        font-size: 1.225rem;
+        line-height: 1.75rem;
+    }
+
+    .tx-c {
+        font-weight: 700 !important;
+        color: rgb(221 166 15 / 1) !important;
+        text-decoration-line: underline !important;
+        text-decoration-color: rgb(221 166 15 / 1) !important;
+    }
+}
+
+// Responsive breakpoints
+@media (max-width: 768px) {
+    .login-card {
+        max-width: 70%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-card {
+        max-width: 80%;
+        padding: 10px;
+
+        .card-body {
+            padding: 15px !important;
+        }
+
+        .font-wc {
+            font-size: 1.1rem;
+        }
+
+        .font-wc-1 {
+            font-size: 0.875rem;
+        }
+
+        .text-muted-1 {
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            height: 40px;
+        }
+
+        .btn-warning {
+            height: 40px;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .login-card {
+        max-width: 98%;
+        padding: 8px;
+
+        .card-body {
+            padding: 10px !important;
+        }
+
+        .font-wc {
+            font-size: 1rem;
+        }
+
+        .font-wc-1 {
+            font-size: 0.8rem;
+        }
+
+        .text-muted-1 {
+            font-size: 1rem;
+        }
+    }
+}
