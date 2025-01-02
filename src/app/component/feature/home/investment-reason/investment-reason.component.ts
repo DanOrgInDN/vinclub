@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavComponent } from '../../../layout/nav/nav.component';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
 
 interface InvestmentSection {
@@ -66,9 +66,9 @@ export class InvestmentReasonComponent {
     }
   ];
   
-  constructor(private router: Router) {}
+  constructor(private location: Location) {}
 
   goBack() {
-    this.router.navigate(['/vinclub']);
+    this.location.back();
   }
 }

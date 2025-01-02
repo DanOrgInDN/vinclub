@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { NavComponent } from '../../../layout/nav/nav.component';
 import { FormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-withdrawal',
@@ -19,11 +19,11 @@ export class WithdrawalComponent {
     bankName: '',
     owner: ''
   };
-  constructor(private router: Router) {}
+  constructor(private location: Location) {}
 
 
-  onBack() {
-    this.router.navigate(['/vinclub']);
+  goBack() {
+    this.location.back();
   }
 
   onConfirm() {

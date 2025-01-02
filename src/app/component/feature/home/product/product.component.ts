@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavComponent } from '../../../layout/nav/nav.component';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -74,9 +74,9 @@ export class ProductComponent {
     ]
   };
 
-  constructor(private router: Router) { }
+  constructor(private location: Location) { }
 
   goBack() {
-    this.router.navigate(['/vinclub']);
+    this.location.back();
   }
 }

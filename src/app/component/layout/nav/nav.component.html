@@ -2,15 +2,21 @@
     <div class="bottom-nav">
         <div class="nav-container">
             <a href="/vinclub/recharge" class="nav-item">
-                <img src="assets/icons/nap-tien.png" alt="icon">
+                <img [src]="getImageSrc('/vinclub/recharge', 'assets/icons/nap-tien_active.png', 'assets/icons/nap-tien.png')" 
+                     alt="logo" 
+                     class="w-12 h-12 rounded-full shadow shadow-black/30">
                 <div class="nav-text">Nạp tiền</div>
             </a>
-            <a href="/vinclub" class="nav-item active">
-                <img src="assets/icons/trang-chu.png" alt="icon">
+            <a href="/vinclub" class="nav-item">
+                <img [src]="getImageSrc('/vinclub', 'assets/icons/trang-chu_active.png', 'assets/icons/trang-chu.png')"
+                     alt="logo"
+                     class="w-12 h-12 rounded-full shadow shadow-black/30">
                 <div class="nav-text">Trang chủ</div>
             </a>
             <a href="/vinclub/withdrawal" class="nav-item">
-                <img src="assets/icons/rut-tien.png" alt="icon">
+                <img [src]="getImageSrc('/vinclub/withdrawal', 'assets/icons/rut-tien_active.png', 'assets/icons/rut-tien.png')"
+                     alt="logo"
+                     class="w-12 h-12 rounded-full shadow shadow-black/30">
                 <div class="nav-text">Rút tiền</div>
             </a>
         </div>

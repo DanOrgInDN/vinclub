@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavComponent } from '../../../layout/nav/nav.component';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
 
 interface MenuItem {
   icon: string;
@@ -34,12 +35,18 @@ export class ProfileComponent {
     { icon: 'assets/icons/mat-khau.png', label: 'Thay đổi mật khẩu', link: '/vinclub/change-password' }
   ];
 
+  constructor(private location: Location) {}
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
       // Xử lý upload avatar
       console.log('Upload avatar:', file);
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   logout() {

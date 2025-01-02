@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavComponent } from '../../../layout/nav/nav.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-change-password',
@@ -19,7 +19,7 @@ export class ChangePasswordComponent {
   showConfirmPassword = false;
   errorMessage = '';
 
-  constructor(private router: Router) {}  
+  constructor(private location: Location) {}  
 
   togglePasswordVisibility(field: 'old' | 'new' | 'confirm') {
     switch(field) {
@@ -86,6 +86,6 @@ export class ChangePasswordComponent {
   }
 
   goBack() {
-    this.router.navigate(['/vinclub']);
+    this.location.back();
   }
 }

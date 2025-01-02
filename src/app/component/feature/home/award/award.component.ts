@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavComponent } from '../../../layout/nav/nav.component';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 export interface AwardItem {
   description: string;
@@ -77,13 +77,13 @@ export class AwardComponent {
     }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private location: Location) {}
 
   switchTab(tab: 'money' | 'award' | 'profit') {
     this.currentTab = tab;
   }
   
   goBack() {
-    this.router.navigate(['/vinclub']);
+    this.location.back();
   } 
 }

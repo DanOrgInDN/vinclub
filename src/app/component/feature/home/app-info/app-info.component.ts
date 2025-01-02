@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { NavComponent } from "../../../layout/nav/nav.component";
+import { Location } from '@angular/common';
 
 interface AppInfo {
   version: string;
@@ -24,4 +25,9 @@ export class AppInfoComponent {
     address: 'Số 7, đường Bằng Lăng 1, Khu đô thị Vinhomes Riverside, Phường Việt Hưng, Quận Long Biên, Thành Phố Hà Nội, Việt Nam',
     hotline: '1900999911'
   };
+  constructor(private location: Location) {}
+
+  goBack() {
+    this.location.back();
+  }
 }

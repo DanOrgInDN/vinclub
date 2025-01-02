@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NavComponent } from '../../../layout/nav/nav.component';
-import { Router } from '@angular/router';
-
+import { Location } from '@angular/common';
+  
 @Component({
   selector: 'app-recharge',
   imports: [ NavComponent, CommonModule, FormsModule ],
@@ -20,13 +20,13 @@ export class RechargeComponent {
     owner: ''
   };
 
-  constructor(private router: Router) {}
+  constructor(private location: Location) {}
 
   onUpdate() {
     console.log('Update clicked');
   }
 
   onBack() {
-    this.router.navigate(['/vinclub']);
+    this.location.back();
   }
 }

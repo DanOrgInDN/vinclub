@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavComponent } from '../../../layout/nav/nav.component';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-benefit',
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
   styleUrl: './welfare.component.scss'
 })
 export class WelfareComponent {
-    constructor(private router: Router) {}
+    constructor(private location: Location) {}
 
     goBack() {
-        this.router.navigate(['/vinclub']);
+        this.location.back();
     }
 }

@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Location } from '@angular/common';
 import { NavComponent } from "../../../layout/nav/nav.component";
 import { CommonModule } from "@angular/common";
 import { Router } from "@angular/router";
@@ -51,9 +52,9 @@ export class NewsComponent {
    
   ];
 
-  constructor(private router: Router) { }
+  constructor(private location: Location) { }
 
-  goback(){
-    this.router.navigate(['/vinclub']);
+  goBack() {
+    this.location.back();
   }
 }

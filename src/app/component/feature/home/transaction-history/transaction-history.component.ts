@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavComponent } from '../../../layout/nav/nav.component';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 type TransactionType = 'deposit' | 'withdrawal' | 'profit';
 
@@ -19,7 +19,7 @@ interface Transaction {
   styleUrl: './transaction-history.component.scss'
 })
 export class TransactionHistoryComponent {
-  constructor(private router: Router) {}
+  constructor(private location: Location) {}
   selectedType: TransactionType = 'deposit';
   total: number = 0;
 
@@ -35,7 +35,7 @@ export class TransactionHistoryComponent {
   }
 
   onBack() {
-    this.router.navigate(['/vinclub']);
+    this.location.back();
   }
 
   selectType(type: TransactionType) {
