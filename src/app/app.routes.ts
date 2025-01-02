@@ -10,6 +10,7 @@ import { ProfitProfileComponent } from './component/feature/home/profit-profile/
 import { InvestmentReasonComponent } from './component/feature/home/investment-reason/investment-reason.component';
 import { RechargeComponent } from './component/feature/home/recharge/recharge.component';
 import { WithdrawalComponent } from './component/feature/home/withdrawal/withdrawal.component';
+import { TransactionHistoryComponent } from './component/feature/home/transaction-history/transaction-history.component';
 
 export const routes: Routes = [
     {
@@ -64,5 +65,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/withdrawal',
         component: WithdrawalComponent
+    },
+    {
+        path: 'vinclub/transaction-history',
+        component: TransactionHistoryComponent
     }
 ];

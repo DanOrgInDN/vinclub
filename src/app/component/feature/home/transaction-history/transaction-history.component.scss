@@ -1,0 +1,188 @@
+:host {
+    display: block;
+    height: 100vh;
+}
+
+.page-wrapper {
+    height: 100%;
+    width: 100%;
+    max-width: 750px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0 auto;
+
+    .background-image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+
+    .main-content {
+        height: calc(100% - 96px);
+        overflow-y: auto;
+        width: 100%;
+        position: relative;
+        z-index: 50;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .header {
+            height: 3rem;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            padding: 0.5rem 0;
+            margin: 1.5rem 0 0.5rem;
+            color: #dea94f;
+
+            .back-button {
+                width: 20px;
+                height: 100%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                @media (min-width: 768px) {
+                    left: 20px;
+                }
+
+                &:hover {
+                    opacity: 0.5;
+                }
+
+                svg {
+                    font-size: 1.875rem;
+                    fill: currentColor;
+                }
+            }
+
+            .title {
+                font-size: 1rem;
+                text-align: center;
+                font-weight: 700;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
+
+                @media (min-width: 768px) {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .content {
+            width: 91.666667%;
+            margin: 0 auto;
+
+            .history-container {
+                border-radius: 0.5rem;
+                color: white;
+                border: 1px solid #dea94f;
+                background-color: #393530;
+                margin-bottom: 2.5rem;
+
+                .tab-header {
+                    background: linear-gradient(to right, #bf7271, rgb(191 114 113 / 0));
+                    height: 3rem;
+                    width: 100%;
+                    border-radius: 0.5rem 0.5rem 0 0;
+                    display: flex;
+                    flex-direction: row;
+
+                    .tab-item {
+                        width: 33.333333%;
+                        text-align: center;
+                        cursor: pointer;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1.050rem;
+                        
+                        &:hover {
+                            opacity: 0.5;
+                        }
+
+                        &:not(:last-child) {
+                            border-right: 1px solid white;
+                        }
+
+                        &.active {
+                            color: #dea94f;
+                        }
+                    }
+                }
+
+                .history-content {
+                    height: 100%;
+                    width: 100%;
+                    overflow-y: auto;
+                    padding-bottom: 1rem;
+
+                    .divider {
+                        border: 1px solid #dea94f;
+                        margin: 0.5rem;
+                    }
+
+                    .total-section {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 0.5rem;
+                        align-items: center;
+
+                        .total-label {
+                            font-size: 1.25rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.transaction-list {
+    padding: 0.5rem;
+
+    .transaction-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem;
+        border-bottom: 1px solid rgba(222, 169, 79, 0.3);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-date {
+            color: #dea94f;
+        }
+
+        .transaction-amount {
+            font-weight: 600;
+        }
+
+        .transaction-status {
+            color: #4CAF50;
+            font-size: 0.875rem;
+        }
+    }
+}
