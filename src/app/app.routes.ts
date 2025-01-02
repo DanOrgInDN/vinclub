@@ -4,6 +4,7 @@ import { LoginComponent } from './component/feature/login/login.component';
 import { WelfareComponent } from './component/feature/home/welfare/welfare.component';
 import { AwardComponent } from './component/feature/home/award/award.component';
 import { TargetComponent } from './component/feature/home/target/target.component';
+import { ProductComponent } from './component/feature/home/product/product.component';
 
 export const routes: Routes = [
     {
@@ -34,5 +35,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/target',
         component: TargetComponent
+    },
+    {
+        path: 'vinclub/product',
+        component: ProductComponent
     }
 ];
