@@ -13,6 +13,7 @@ import { WithdrawalComponent } from './component/feature/home/withdrawal/withdra
 import { TransactionHistoryComponent } from './component/feature/home/transaction-history/transaction-history.component';
 import { ProfileComponent } from './component/feature/home/profile/profile.component';
 import { AppInfoComponent } from './component/feature/home/app-info/app-info.component';
+import { NewsComponent } from './component/feature/home/news/news.component';
 
 export const routes: Routes = [
     {
@@ -79,5 +80,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/app-info',
         component: AppInfoComponent
+    },
+    {
+        path: 'vinclub/news',
+        component: NewsComponent
     }
 ];
