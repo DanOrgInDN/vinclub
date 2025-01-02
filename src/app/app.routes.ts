@@ -6,6 +6,7 @@ import { AwardComponent } from './component/feature/home/award/award.component';
 import { TargetComponent } from './component/feature/home/target/target.component';
 import { ProductComponent } from './component/feature/home/product/product.component';
 import { ChangePasswordComponent } from './component/feature/home/change-password/change-password.component';
+import { ProfitProfileComponent } from './component/feature/home/profit-profile/profit-profile.component';
 
 export const routes: Routes = [
     {
@@ -44,5 +45,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/change-password',
         component: ChangePasswordComponent
+    },
+    {
+        path: 'vinclub/profit-profile',
+        component: ProfitProfileComponent
     }
 ];
