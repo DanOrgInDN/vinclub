@@ -5,6 +5,7 @@ import { WelfareComponent } from './component/feature/home/welfare/welfare.compo
 import { AwardComponent } from './component/feature/home/award/award.component';
 import { TargetComponent } from './component/feature/home/target/target.component';
 import { ProductComponent } from './component/feature/home/product/product.component';
+import { ChangePasswordComponent } from './component/feature/home/change-password/change-password.component';
 
 export const routes: Routes = [
     {
@@ -39,5 +40,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/product',
         component: ProductComponent
+    },
+    {
+        path: 'vinclub/change-password',
+        component: ChangePasswordComponent
     }
 ];
