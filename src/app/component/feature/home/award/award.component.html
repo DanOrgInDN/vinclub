@@ -1,0 +1,85 @@
+<div class="page-wrapper">
+    <img class="background-image" 
+         src="assets/images/splash_background.png" 
+         alt="background">
+
+    <div class="main-content">
+        <div class="header">
+            <div class="back-button " (click)="goBack()">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512">
+                    <path
+                        d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z">
+                    </path>
+                </svg>
+            </div>
+            <div class="title">CÁC ƯU ĐÃI</div>
+        </div>
+
+        <div class="content">
+            <div class="description-list">
+                <div class="description-item">
+                    • Sử dụng thẻ thành viên VIP: Nhận siêu giải thưởng ưu đãi giảm giá khi mua bất động sản Vinhomes, hoặc các dòng xe của VinFast... Thời gian sử dụng: Từ 1 đến 5 năm miễn phí tùy theo hạn mức tham gia đầu tư của khách hàng, mà nhận siêu ưu đãi giảm giá từ 5% đến 30%. Khách hàng đăng ký thành công tham gia quỹ tiết kiệm nhận thẻ cổ phần phổ thông giảm giá các sản phẩm của Tập đoàn VINGROUP. Điền thông tin được in trên thẻ thành viên miễn phí không cần cọc.
+                </div>
+                <div class="description-item">
+                    • Khách hàng tạo tài khoản không thực hiện giao dịch kích hoạt tài khoản thì sau 24 tiếng tài khoản sẽ tự động vô hiệu hóa.
+                </div>
+                <div class="description-item warning">
+                    *Lưu ý: Hệ thống của Tập đoàn chỉ áp dụng cho thành viên có mã mời tham dự đầu số là VIC.
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-container">
+                <table>
+                    <tbody>
+                        <tr class="header-row">
+                            <td colspan="3">Ưu đãi</td>
+                        </tr>
+                        <tr>
+                            <td class="px-2" colspan="3">
+                                <div class="tab-container">
+                                    <div class="tab" [class.active]="currentTab === 'money'" (click)="switchTab('money')">
+                                        <span>Số tiền</span>
+                                        <div class="tab-indicator"></div>
+                                    </div>
+                                    <div class="tab" [class.active]="currentTab === 'award'" (click)="switchTab('award')">
+                                        <span>Phần thưởng</span>
+                                        <div class="tab-indicator"></div>
+                                    </div>
+                                    <div class="tab" [class.active]="currentTab === 'profit'" (click)="switchTab('profit')">
+                                        <span>Lợi nhuận</span>
+                                        <div class="tab-indicator"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="award-row" *ngFor="let item of awardList">
+                            <td class="px-2 w-10/12">
+                                <div class="font-bold text-white">Ưu đãi</div>
+                                <div class="text-white mb-3">{{item.description}}</div>
+                            </td>
+                            <td class="w-2/12">
+                                <div class="value-container">
+                                    <div class="value-indicator" [ngClass]="{
+                                        'money-tab': currentTab === 'money',
+                                        'award-tab': currentTab === 'award',
+                                        'profit-tab': currentTab === 'profit'
+                                    }"></div>
+                                    <div class="value-amount text-white font-bold text-center text-[12px] md:text-base">
+                                        <ng-container [ngSwitch]="currentTab">
+                                            <span class="block" *ngSwitchCase="'money'">{{item.money}}</span>
+                                            <span class="block" *ngSwitchCase="'award'">{{item.award}}</span>
+                                            <span class="block" *ngSwitchCase="'profit'">{{item.profit}}</span>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <app-nav></app-nav>
+</div>

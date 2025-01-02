@@ -5,12 +5,17 @@
 
 .page-wrapper {
     height: 100%;
-    width: 750px;
+    width: 100%;
+    max-width: 750px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     position: relative;
     margin: 0 auto;
+
+    @media (min-width: 768px) {
+        width: 750px;
+    }
 
     .background-image {
         width: 100%;
@@ -27,6 +32,13 @@
         width: 100%;
         position: relative;
         z-index: 50;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    
+        -ms-overflow-style: none;
+        scrollbar-width: none;
 
         .header {
             height: 3rem;
@@ -48,7 +60,11 @@
                 justify-content: center;
                 position: absolute;
                 top: 0;
-                left: 20px;
+                left: 0;
+
+                @media (min-width: 768px) {
+                    left: 20px;
+                }
 
                 &:hover {
                     opacity: 0.5;
@@ -60,7 +76,7 @@
             }
 
             .title {
-                font-size: 1rem;
+                font-size: 0.875rem;
                 text-align: center;
                 font-weight: 700;
                 width: 100%;
@@ -77,18 +93,26 @@
         }
 
         .content {
-            width: 92%;
-            max-width: 750px;
+            width: 95%;
             margin: 0 auto;
             padding-bottom: 1rem;
+
+            @media (min-width: 768px) {
+                width: 92%;
+                max-width: 750px;
+            }
 
             .description {
                 color: white;
                 font-weight: bold;
-                font-size: 1.125rem;
+                font-size: 0.875rem;
                 border-bottom: 1px solid #8b6c39;
                 padding-bottom: 0.5rem;
                 margin-bottom: 0.5rem;
+
+                @media (min-width: 768px) {
+                    font-size: 1.125rem;
+                }
             }
 
             .table-container {
@@ -100,11 +124,13 @@
                     border-collapse: collapse;
 
                     td, th {
-                        // border: 1px solid #8b6c39;
                         text-align: center;
-                        padding: 0.5rem;
-                        font-size: 1.125rem;
+                        font-size: 0.875rem;
                         font-weight: bold;
+
+                        @media (min-width: 768px) {
+                            font-size: 1.125rem;
+                        }
                     }
 
                     .header-row {
@@ -128,8 +154,12 @@
                             text-align: center;
                             margin: 1rem 0;
                             padding: 0 0.75rem;
-                            font-size: 0.875rem;
+                            font-size: 0.75rem;
                             text-transform: uppercase;
+
+                            @media (min-width: 768px) {
+                                font-size: 0.875rem;
+                            }
                         }
                     }
                 }

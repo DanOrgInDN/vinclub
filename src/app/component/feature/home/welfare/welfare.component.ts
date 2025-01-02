@@ -12,6 +12,6 @@ export class WelfareComponent {
     constructor(private router: Router) {}
 
     goBack() {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/vinclub']);
     }
 }

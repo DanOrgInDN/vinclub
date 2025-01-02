@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './component/feature/home/home.component';
 import { LoginComponent } from './component/feature/login/login.component';
 import { WelfareComponent } from './component/feature/home/welfare/welfare.component';
+import { AwardComponent } from './component/feature/home/award/award.component';
 
 export const routes: Routes = [
     {
@@ -24,5 +25,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/welfare',
         component: WelfareComponent
+    },
+    {
+        path: 'vinclub/award',
+        component: AwardComponent
     }
 ];
