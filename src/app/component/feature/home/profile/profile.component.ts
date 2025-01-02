@@ -30,7 +30,7 @@ export class ProfileComponent {
     { icon: 'assets/icons/ho-so.png', label: 'Hồ sơ lợi nhuận', link: '/vinclub/profit-profile' },
     { icon: 'assets/icons/nap-tien.png', label: 'Nạp tiền', link: '/vinclub/recharge' },
     { icon: 'assets/icons/rut-tien.png', label: 'Rút tiền', link: '/vinclub/withdrawal' },
-    { icon: 'assets/icons/information.png', label: 'Thông tin ứng dụng', link: '/vinclub/website' },
+    { icon: 'assets/icons/information.png', label: 'Thông tin ứng dụng', link: '/vinclub/app-info' },
     { icon: 'assets/icons/mat-khau.png', label: 'Thay đổi mật khẩu', link: '/vinclub/change-password' }
   ];
 

@@ -12,6 +12,7 @@ import { RechargeComponent } from './component/feature/home/recharge/recharge.co
 import { WithdrawalComponent } from './component/feature/home/withdrawal/withdrawal.component';
 import { TransactionHistoryComponent } from './component/feature/home/transaction-history/transaction-history.component';
 import { ProfileComponent } from './component/feature/home/profile/profile.component';
+import { AppInfoComponent } from './component/feature/home/app-info/app-info.component';
 
 export const routes: Routes = [
     {
@@ -74,5 +75,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/profile',
         component: ProfileComponent
+    },
+    {
+        path: 'vinclub/app-info',
+        component: AppInfoComponent
     }
 ];
