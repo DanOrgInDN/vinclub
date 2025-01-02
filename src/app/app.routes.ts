@@ -11,6 +11,7 @@ import { InvestmentReasonComponent } from './component/feature/home/investment-r
 import { RechargeComponent } from './component/feature/home/recharge/recharge.component';
 import { WithdrawalComponent } from './component/feature/home/withdrawal/withdrawal.component';
 import { TransactionHistoryComponent } from './component/feature/home/transaction-history/transaction-history.component';
+import { ProfileComponent } from './component/feature/home/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -69,5 +70,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/transaction-history',
         component: TransactionHistoryComponent
+    },
+    {
+        path: 'vinclub/profile',
+        component: ProfileComponent
     }
 ];

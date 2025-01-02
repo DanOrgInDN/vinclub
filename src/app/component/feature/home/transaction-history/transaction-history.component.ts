@@ -38,7 +38,7 @@ export class TransactionHistoryComponent {
     this.router.navigate(['/vinclub']);
   }
 
-  selectType(type: 'deposit' | 'withdrawal' | 'profit') {
+  selectType(type: TransactionType) {
     this.selectedType = type;
   }
 }
