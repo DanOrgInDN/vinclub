@@ -8,6 +8,7 @@ import { ProductComponent } from './component/feature/home/product/product.compo
 import { ChangePasswordComponent } from './component/feature/home/change-password/change-password.component';
 import { ProfitProfileComponent } from './component/feature/home/profit-profile/profit-profile.component';
 import { InvestmentReasonComponent } from './component/feature/home/investment-reason/investment-reason.component';
+import { RechargeComponent } from './component/feature/home/recharge/recharge.component';
 
 export const routes: Routes = [
     {
@@ -54,5 +55,9 @@ export const routes: Routes = [
     {
         path: 'vinclub/investment-reason',
         component: InvestmentReasonComponent
+    },
+    {
+        path: 'vinclub/recharge',
+        component: RechargeComponent
     }
 ];
