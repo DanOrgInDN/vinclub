@@ -14,13 +14,13 @@
         <div class="user-info-container">
             <img src="assets/icons/vin-icon.png" class="icon-top-right" alt="icon">
             
-            <div class="user-info-content">
+            <div class="user-info-content" *ngIf="userInfo">
                 <div class="user-info-header">
                     <div class="user-avatar-group">
                         <img src="assets/icons/user.png" class="user-avatar" alt="user">
-                        <span class="username">0978699931</span>
+                        <span class="username">{{ userInfo.phone }}</span>
                     </div>
-                    <div class="balance">Số dư: 0 VND</div>
+                    <div class="balance">Số dư: {{ userInfo.totalAmount }} VND</div>
                 </div>
 
                 <div class="menu-button-wrapper">

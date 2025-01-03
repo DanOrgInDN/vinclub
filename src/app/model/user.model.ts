@@ -7,4 +7,5 @@ export interface UserInfo {
     fullName: string;
     referenceCode: string;
     phone: string;
+    totalAmount: number;
 }

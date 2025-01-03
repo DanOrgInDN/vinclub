@@ -33,6 +33,27 @@ export class AuthService {
     return null;
   }
 
+  get userId(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      const user = localStorage.getItem('user');
+      if (user) {
+        const userInfo: UserInfo = JSON.parse(user);
+        return userInfo.userId;
+      }
+    }
+    return null;
+  }
+
+  get currentUserValue(): UserInfo | null {
+    if (isPlatformBrowser(this.platformId)) {
+      const user = localStorage.getItem('user');
+      if (user) {
+        return JSON.parse(user);
+      }
+    }
+    return null;
+  }
+
   private loadStoredAuth() {
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
