@@ -92,13 +92,13 @@ export class ProfileComponent implements OnInit {
           this.getAvatar(this.userInfo.imageUrl);
           
           // Kiểm tra role và thêm menu admin
-          if (this.userInfo.roleName === 'ADMIN') {
-            this.menuItems.unshift({ 
-              icon: 'assets/icons/ca-nhan.png', 
-              label: 'Quản lý', 
-              link: '/vinclub/admin' 
-            });
-          }
+          // if (this.userInfo.roleName === 'ADMIN') {
+          //   this.menuItems.unshift({ 
+          //     icon: 'assets/icons/ca-nhan.png', 
+          //     label: 'Quản lý', 
+          //     link: '/vinclub/admin' 
+          //   });
+          // }
         }
       },
       error: (error) => {
