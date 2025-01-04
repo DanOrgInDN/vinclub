@@ -19,32 +19,38 @@
                     <tbody>
                         <tr>
                             <th>Tên/ Biệt danh</th>
-                            <td>{{userData.fullName}}</td>
+                            <td>{{userInfo?.fullName || 'Loading...'}}</td>
                         </tr>
                         <tr>
                             <th>Số điện thoại</th>
-                            <td>{{userData.phone}}</td>
+                            <td>{{userInfo?.phone || 'Loading...'}}</td>
                         </tr>
                         <tr>
                             <th>Số dư</th>
-                            <td>{{userData.balance}} VND</td>
+                            <td>{{userInfo?.totalAmount || 0}} VND</td>
                         </tr>
                         <tr>
                             <th>Số tài khoản</th>
                             <td>
-                                <input type="text" [(ngModel)]="userData.accountNumber">
+                                <input type="text" [(ngModel)]="recharge.accountNumber">
                             </td>
                         </tr>
                         <tr>
                             <th>Tên ngân hàng</th>
                             <td>
-                                <input type="text" [(ngModel)]="userData.bankName">
+                                <input type="text" [(ngModel)]="recharge.bankName">
                             </td>
                         </tr>
                         <tr>
                             <th>Chủ sở hữu</th>
                             <td>
-                                <input type="text" [(ngModel)]="userData.owner">
+                                <input type="text" [(ngModel)]="recharge.accountName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Số tiền</th>
+                            <td>
+                                <input type="number" [(ngModel)]="recharge.amount">
                             </td>
                         </tr>
                     </tbody>
