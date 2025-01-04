@@ -1,0 +1,52 @@
+<div class="withdrawal-management">
+    <!-- Search Section -->
+    <div class="search-section">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm"
+        placeholder="Tìm kiếm theo số điện thoại..."
+        (keyup.enter)="searchWithdrawals()">
+      <button (click)="searchWithdrawals()">Tìm kiếm</button>
+    </div>
+  
+    <!-- Withdrawals Table -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Số điện thoại</th>
+            <th>Số tiền</th>
+            <th>Ngân hàng</th>
+            <th>Số tài khoản</th>
+            <th>Ngày tạo</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let withdrawal of withdrawals">
+            <td>{{withdrawal.phone}}</td>
+            <td>{{withdrawal.amount}} VND</td>
+            <td>{{withdrawal.bankName}}</td>
+            <td>{{withdrawal.accountNumber}}</td>
+            <td>{{withdrawal.createdAt | date:'dd/MM/yyyy HH:mm'}}</td>
+            <td>{{withdrawal.status}}</td>
+            <td>
+              <button 
+                *ngIf="withdrawal.status === 'PENDING'"
+                (click)="approveWithdrawal(withdrawal.id)"
+                class="approve-btn">
+                Duyệt
+              </button>
+              <button 
+                *ngIf="withdrawal.status === 'PENDING'"
+                (click)="rejectWithdrawal(withdrawal.id)"
+                class="reject-btn">
+                Từ chối
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

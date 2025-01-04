@@ -9,4 +9,5 @@ export interface UserInfo {
     phone: string;
     totalAmount: number;
     imageUrl: string;
+    roleName: string;
 }

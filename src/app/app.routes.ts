@@ -84,5 +84,10 @@ export const routes: Routes = [
     {
         path: 'vinclub/news',
         component: NewsComponent
+    },
+    {
+        path: 'vinclub/admin',
+        loadChildren: () => import('./component/feature/admin/admin.routes')
+          .then(m => m.adminRoutes)
     }
 ];

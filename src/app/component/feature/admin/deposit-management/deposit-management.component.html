@@ -1,0 +1,51 @@
+<div class="deposit-management">
+    <div class="header">    
+        <div class="title">Quản lý nạp tiền</div>
+    </div>
+    <!-- Search Section -->
+    <div class="search-section">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm"
+        placeholder="Tìm kiếm theo số điện thoại..."
+        (keyup.enter)="searchDeposits()">
+      <button (click)="searchDeposits()">Tìm kiếm</button>
+    </div>
+  
+    <!-- Deposits Table -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Số điện thoại</th>
+            <th>Số tiền</th>
+            <th>Ngày tạo</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let deposit of deposits">
+            <td>{{deposit.phone}}</td>
+            <td>{{deposit.amount}} VND</td>
+            <td>{{deposit.createdAt | date:'dd/MM/yyyy HH:mm'}}</td>
+            <td>{{deposit.status}}</td>
+            <td>
+              <button 
+                *ngIf="deposit.status === 'PENDING'"
+                (click)="approveDeposit(deposit.id)"
+                class="approve-btn">
+                Duyệt
+              </button>
+              <button 
+                *ngIf="deposit.status === 'PENDING'"
+                (click)="rejectDeposit(deposit.id)"
+                class="reject-btn">
+                Từ chối
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
