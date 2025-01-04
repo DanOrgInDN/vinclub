@@ -8,4 +8,5 @@ export interface UserInfo {
     referenceCode: string;
     phone: string;
     totalAmount: number;
+    imageUrl: string;
 }

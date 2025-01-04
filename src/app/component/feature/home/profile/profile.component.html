@@ -17,7 +17,7 @@
                 <div class="avatar-section">
                     <label for="uploadAvatar" class="avatar-wrapper">
                         <div class="upload-overlay">+</div>
-                        <img [src]="userData.avatar" alt="avatar">
+                        <img [src]="avatarUrl ? avatarUrl : 'assets/icons/user.png'" alt="avatar">
                     </label>
                     <input 
                         type="file" 
@@ -25,18 +25,18 @@
                         accept="image/*" 
                         (change)="onFileSelected($event)"
                         class="hidden-input">
-                    <div class="phone-number">{{userData.phone}}</div>
+                    <div class="phone-number">{{userInfo?.phone || 'Loading...'}}</div>
                 </div>
 
                 <div class="info-grid">
                     <div class="info-column">
                         <span class="label">Số điện thoại</span>
-                        <div class="value">{{userData.phone}}</div>
+                        <div class="value">{{userInfo?.phone || 'Loading...'}}</div>
                     </div>
                     <div class="divider"></div>
                     <div class="info-column">
                         <span class="label">Số dư</span>
-                        <div class="value">{{userData.balance}} VND</div>
+                        <div class="value">{{userInfo?.totalAmount || '0'}} VND</div>
                     </div>
                 </div>
             </div>
