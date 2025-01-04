@@ -16,14 +16,14 @@ import { Recharge } from '../../../../model/transaction.model';
   styleUrl: './recharge.component.scss'
 })
 export class RechargeComponent implements OnInit {
-  recharge!: Recharge;
+
 
 
   constructor(private location: Location, private authService: AuthService,
     private userService: UserService,
     private rechargeService: RechargeService) { }
   userInfo!: UserInfo;
-
+  recharge!: Recharge;
   initForm() {  
     this.recharge = {
       accountNumber: '',

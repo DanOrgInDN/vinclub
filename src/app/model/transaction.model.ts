@@ -5,7 +5,9 @@ export interface Recharge {
     bankName: string;
 }
 
-export interface Withdraw {
-    userId: string;
+export interface Withdrawal {
     amount: number;
+    accountNumber: string;
+    accountName: string;
+    bankName: string;
 }
