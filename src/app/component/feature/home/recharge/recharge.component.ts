@@ -8,6 +8,7 @@ import { UserService } from '../../../../services/user/user.service';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { RechargeService } from '../../../../services/recharge/recharge.service';
 import { Recharge } from '../../../../model/transaction.model';
+import { NotificationService } from '../../../../shared/notification/services/notification.service';
 
 @Component({
   selector: 'app-recharge',
@@ -21,10 +22,11 @@ export class RechargeComponent implements OnInit {
 
   constructor(private location: Location, private authService: AuthService,
     private userService: UserService,
-    private rechargeService: RechargeService) { }
+    private rechargeService: RechargeService,
+    private notificationService: NotificationService) { }
   userInfo!: UserInfo;
   recharge!: Recharge;
-  initForm() {  
+  initForm() {
     this.recharge = {
       accountNumber: '',
       bankName: '',
@@ -65,7 +67,13 @@ export class RechargeComponent implements OnInit {
       next: (response: any) => {
         if (response.result_code === 1) {
           this.initForm();
+          this.notificationService.showSuccess('Nạp tiền thành công');
+        } else {
+          this.notificationService.showError('Nạp tiền thất bại');
         }
+      },
+      error: (error) => {
+        this.notificationService.showError('Nạp tiền thất bại');
       }
     });
   }

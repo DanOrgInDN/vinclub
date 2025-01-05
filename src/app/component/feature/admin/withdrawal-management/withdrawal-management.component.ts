@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { AdminService } from '../admin.service';
 import { Withdrawal } from '../../../../model/transaction.model';
+import { NotificationService } from '../../../../shared/notification/services/notification.service';
 
 @Component({
   selector: 'app-withdrawal-management',
@@ -23,7 +24,7 @@ export class WithdrawalManagementComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   private searchSubject = new Subject<string>();
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.loadAllWithdrawals();
@@ -87,7 +88,15 @@ export class WithdrawalManagementComponent implements OnInit, OnDestroy {
   approveWithdrawal(id: string) {
     this.adminService.approveWithdrawal(id).subscribe({
       next: (response: any) => {
+       if (response.result_code === 1) {
         this.loadAllWithdrawals();
+        this.notificationService.showSuccess('Phê duyệt rút tiền thành công');
+       } else {
+        this.notificationService.showError('Phê duyệt rút tiền thất bại');
+       }
+      },
+      error: (error) => {
+        this.notificationService.showError('Phê duyệt rút tiền thất bại');
       }
     });
   }
@@ -95,7 +104,15 @@ export class WithdrawalManagementComponent implements OnInit, OnDestroy {
   rejectWithdrawal(id: string) {
     this.adminService.rejectWithdrawal(id).subscribe({
       next: (response: any) => {
-        this.loadAllWithdrawals();
+        if (response.result_code === 1) {
+          this.loadAllWithdrawals();
+          this.notificationService.showSuccess('Từ chối rút tiền thành công');
+        } else {
+          this.notificationService.showError('Từ chối rút tiền thất bại');
+        }
+      },
+      error: (error) => {
+        this.notificationService.showError('Từ chối rút tiền thất bại');
       }
     });
   }

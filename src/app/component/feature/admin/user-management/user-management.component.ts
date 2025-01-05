@@ -5,6 +5,7 @@ import { AdminService } from '../admin.service';
 import { UserInfo } from '../../../../model/user.model';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { NotificationService } from '../../../../shared/notification/services/notification.service';
 
 @Component({
   selector: 'app-user-management',
@@ -24,7 +25,7 @@ export class UserManagementComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   private searchSubject = new Subject<string>();
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.loadAllUsers();
@@ -89,7 +90,13 @@ export class UserManagementComponent implements OnInit, OnDestroy {
       next: (response: any) => {
         if (response.result_code === 1) {
           this.loadAllUsers();
+          this.notificationService.showSuccess('Kích hoạt tài khoản thành công');
+        } else {
+          this.notificationService.showError('Kích hoạt tài khoản thất bại');
         }
+      },
+      error: (error) => {
+        this.notificationService.showError('Kích hoạt tài khoản thất bại');
       }
     });
   }
@@ -109,7 +116,13 @@ export class UserManagementComponent implements OnInit, OnDestroy {
       next: (response: any) => {
         if (response.result_code === 1) {
           this.loadAllUsers();
+          this.notificationService.showSuccess('Xóa tài khoản thành công');
+        } else {
+          this.notificationService.showError('Xóa tài khoản thất bại');
         }
+      },
+      error: (error) => {
+        this.notificationService.showError('Xóa tài khoản thất bại');
       }
     });
   }

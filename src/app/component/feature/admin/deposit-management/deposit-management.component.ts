@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { AdminService } from '../admin.service';
 import { Recharge } from '../../../../model/transaction.model';
+import { NotificationService } from '../../../../shared/notification/services/notification.service';
 
 @Component({
   selector: 'app-deposit-management',
@@ -23,7 +24,7 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   private searchSubject = new Subject<string>();
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.loadAllDeposits();
@@ -90,7 +91,15 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
   approveDeposit(id: string) {
     this.adminService.approveDeposit(id).subscribe({
       next: (response: any) => {
-        this.loadAllDeposits();
+        if (response.result_code === 1) {
+          this.loadAllDeposits();
+          this.notificationService.showSuccess('Phê duyệt giao dịch thành công');
+        } else {
+          this.notificationService.showError('Phê duyệt giao dịch thất bại');
+        }
+      },
+      error: (error) => {
+        this.notificationService.showError('Phê duyệt giao dịch thất bại');
       }
     });
   }
@@ -98,7 +107,15 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
   rejectDeposit(id: string) {
     this.adminService.rejectDeposit(id).subscribe({
       next: (response: any) => {
-        this.loadAllDeposits();
+        if (response.result_code === 1) {
+          this.loadAllDeposits();
+          this.notificationService.showSuccess('Từ chối giao dịch thành công');
+        } else {
+          this.notificationService.showError('Từ chối giao dịch thất bại');
+        }
+      },
+      error: (error) => {
+        this.notificationService.showError('Từ chối giao dịch thất bại');
       }
     });
   }
