@@ -32,4 +32,16 @@ export class AdminService {
     rejectDeposit(depositId: string) {
         return this.http.patch(this.apiUrl + '/deposit/reject/' + depositId, {});
     }
+
+    getWithdrawals() {
+        return this.http.get(this.apiUrl + '/withdraw/pending');
+    }
+
+    approveWithdrawal(withdrawalId: string) {
+        return this.http.patch(this.apiUrl + '/withdraw/approve/' + withdrawalId, {});
+    }
+
+    rejectWithdrawal(withdrawalId: string) {
+        return this.http.patch(this.apiUrl + '/withdraw/reject/' + withdrawalId, {});
+    }
 }

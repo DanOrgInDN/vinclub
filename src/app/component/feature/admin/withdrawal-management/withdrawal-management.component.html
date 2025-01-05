@@ -4,9 +4,9 @@
       <input 
         type="text" 
         [(ngModel)]="searchTerm"
-        placeholder="Tìm kiếm theo số điện thoại..."
-        (keyup.enter)="searchWithdrawals()">
-      <button (click)="searchWithdrawals()">Tìm kiếm</button>
+        (ngModelChange)="searchWithdrawals()"
+        placeholder="Tìm kiếm theo tên tài khoản..."
+      >
     </div>
   
     <!-- Withdrawals Table -->
@@ -14,10 +14,11 @@
       <table>
         <thead>
           <tr>
-            <th>Số điện thoại</th>
-            <th>Số tiền</th>
+            <th>Tên tài khoản</th>
+       
             <th>Ngân hàng</th>
             <th>Số tài khoản</th>
+            <th>Số tiền</th>
             <th>Ngày tạo</th>
             <th>Trạng thái</th>
             <th>Thao tác</th>
@@ -25,11 +26,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let withdrawal of withdrawals">
-            <td>{{withdrawal.phone}}</td>
-            <td>{{withdrawal.amount}} VND</td>
+            <td>{{withdrawal.accountName}}</td>
             <td>{{withdrawal.bankName}}</td>
             <td>{{withdrawal.accountNumber}}</td>
-            <td>{{withdrawal.createdAt | date:'dd/MM/yyyy HH:mm'}}</td>
+            <td>{{withdrawal.amount}} VND</td>
+            <td>{{withdrawal.createdDate | date:'dd/MM/yyyy HH:mm'}}</td>
             <td>{{withdrawal.status}}</td>
             <td>
               <button 
@@ -48,5 +49,31 @@
           </tr>
         </tbody>
       </table>
+      <div class="table-container">
+        <table>
+          <!-- Table headers and content -->
+        </table>
+      
+        <!-- Pagination -->
+        <div class="pagination">
+          <button 
+            [disabled]="currentPage === 1"
+            (click)="changePage(currentPage - 1)"
+            class="page-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          
+          <span class="page-info">
+            Trang {{currentPage}} / {{totalPages}}
+          </span>
+          
+          <button 
+            [disabled]="currentPage === totalPages"
+            (click)="changePage(currentPage + 1)"
+            class="page-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>

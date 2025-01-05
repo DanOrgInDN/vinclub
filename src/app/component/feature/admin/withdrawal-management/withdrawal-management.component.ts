@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { AdminService } from '../admin.service';
+import { Withdrawal } from '../../../../model/transaction.model';
 
 @Component({
   selector: 'app-withdrawal-management',
@@ -9,29 +13,90 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './withdrawal-management.component.html',
   styleUrls: ['./withdrawal-management.component.scss']
 })
-export class WithdrawalManagementComponent implements OnInit {
-  withdrawals: any[] = [];
+export class WithdrawalManagementComponent implements OnInit, OnDestroy {
+  allWithdrawals: any[] = [];
+  withdrawals: Withdrawal[] = [];
+  filteredWithdrawals: Withdrawal[] = [];
+  currentPage = 1;
+  pageSize = 10;
+  totalPages = 1;
   searchTerm: string = '';
-  
-  constructor() {}
+  private searchSubject = new Subject<string>();
+
+  constructor(private adminService: AdminService) { }
 
   ngOnInit() {
-    this.loadWithdrawals();
+    this.loadAllWithdrawals();
+
+    this.searchSubject.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      this.performSearch();
+    });
   }
 
-  loadWithdrawals() {
-    // TODO: Call API to load withdrawals
+  loadAllWithdrawals() {
+
+    this.adminService.getWithdrawals().subscribe({
+      next: (response: any) => {
+        if (response.result_code === 1) {
+          this.allWithdrawals = response.result_data.content;
+          this.filteredWithdrawals = [...this.allWithdrawals];
+          this.updateDisplayedWithdrawals();
+        }
+      },
+      error: (error: any) => {
+      }
+    });
+  }
+
+  private performSearch() {
+    if (!this.searchTerm || this.searchTerm.trim() === '') {
+      this.filteredWithdrawals = [...this.allWithdrawals];
+    } else {
+      this.filteredWithdrawals = this.allWithdrawals.filter(withdrawal =>
+        withdrawal.accountName.toLowerCase().includes(this.searchTerm.trim().toLowerCase())
+      );
+    }
+    
+    this.totalPages = Math.ceil(this.filteredWithdrawals.length / this.pageSize);
+    this.currentPage = 1;
+    this.updateDisplayedWithdrawals();
+  }
+
+  updateDisplayedWithdrawals() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    this.withdrawals = this.filteredWithdrawals.slice(start, end);
   }
 
   searchWithdrawals() {
-    // TODO: Implement search
+    this.searchSubject.next(this.searchTerm);
+  }
+
+  changePage(page: number) {
+    this.currentPage = page;
+    this.updateDisplayedWithdrawals();
+  }
+
+  ngOnDestroy() {
+    this.searchSubject.complete();
   }
 
   approveWithdrawal(id: string) {
-    // TODO: Implement approve
+    this.adminService.approveWithdrawal(id).subscribe({
+      next: (response: any) => {
+        this.loadAllWithdrawals();
+      }
+    });
   }
 
   rejectWithdrawal(id: string) {
-    // TODO: Implement reject
+    this.adminService.rejectWithdrawal(id).subscribe({
+      next: (response: any) => {
+        this.loadAllWithdrawals();
+      }
+    });
   }
 }
