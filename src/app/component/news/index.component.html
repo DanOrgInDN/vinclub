@@ -594,11 +594,9 @@
             </div>
         </section>
         <section id="section-guide" class="section-guide">
-            <!-- <h2 class="section-guide__title" style="translate: none; rotate: none; scale: none; transform: translate(0px, 90px); opacity: 0;">Hướng dẫn tải về, cài đặt và đăng ký</h2> -->
             <h2 class="section-guide__title">Hướng dẫn tải về, cài đặt và đăng ký</h2>
-            <!-- <div class="section-guide__content" style="translate: none; rotate: none; scale: none; transform: translate(0px, 90px); opacity: 0;" bis_skin_checked="1"> -->
             <div class="section-guide__content">
-                <div class="tabs tabs__lg" bis_skin_checked="1">
+                <div class="tabs tabs__lg">
                     <ul class="tab-guide">
                         <li class="tab-item is-active" data-tab-target="tab-guide1">
                             <a href="javascript:void(0)" class="tab-link">Tải và cài đặt</a>
@@ -608,171 +606,54 @@
                         </li>
                     </ul>
                 </div>
-                <!-- <div id="tab-guide1" class="tab-content is-active" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;" bis_skin_checked="1"> -->
+
                 <div id="tab-guide1" class="tab-content is-active">
-                    <div class="tab-content__body" bis_skin_checked="1">
-                        <div class="swiper slider-guide-thumb slider-guide-thumb-1 swiper-initialized swiper-vertical swiper-free-mode swiper-watch-progress swiper-backface-hidden swiper-thumbs"
-                            bis_skin_checked="1">
-                            <div bis_skin_checked="1">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active"
-                                        role="group" aria-label="1 / 4" bis_skin_checked="1">
-                                        <span class="swiper-slide__number">1</span>
-                                        <span class="swiper-slide__text">Truy cập vào trang web VinClub và tìm phần dưới
-                                            cùng lựa chọn thiết bị bạn đang sử dụng</span>
-                                    </div>
-                                    <div class="swiper-slide swiper-slide-visible swiper-slide-next" role="group"
-                                        aria-label="2 / 4" bis_skin_checked="1">
-                                        <span class="swiper-slide__number">2</span>
-                                        <span class="swiper-slide__text">Nhấn vào và cho phép tải về</span>
-                                    </div>
-                                    <div class="swiper-slide swiper-slide-visible" role="group" aria-label="3 / 4"
-                                        bis_skin_checked="1">
-                                        <span class="swiper-slide__number">3</span>
-                                        <span class="swiper-slide__text">Nhập mã xác thực được gửi đến số điện thoại
-                                            hoặc email vừa
-                                            nhập</span>
-                                    </div>
-                                    <div class="swiper-slide swiper-slide-visible" role="group" aria-label="4 / 4"
-                                        bis_skin_checked="1">
-                                        <span class="swiper-slide__number">4</span>
-                                        <span class="swiper-slide__text">Bổ sung thông tin tài khoản</span>
-                                    </div>
-                                </div>
-                                <!--<div class="box box-primary-light slider-guide-tips">
-                                <p class="box-title">Hướng dẫn sử dụng ứng dụng VinClub</p>
-                                <a id="js-trigger-guide" href="#huong-dan-su-dung" class="text-link__light">
-                                    <img src="/static/img/icon/player-play-cirle.svg" alt="Xem video"> Xem Video
-                                </a>
-                            </div>-->
-                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                    <div class="tab-content__body">
+                        <div class="guide-steps">
+                            <div class="step-line"></div>
+                            <div class="step-item" [class.active]="activeStep === 1" (click)="setActiveStep(1)">
+                                <div class="step-number">1</div>
+                                <div class="step-text">Truy cập vào trang web VinClub và tìm phần dưới cùng lựa chọn thiết bị bạn đang sử dụng</div>
                             </div>
-                            <div class="swiper slider-guide-content slider-guide-content-1 swiper-initialized swiper-horizontal swiper-backface-hidden"
-                                bis_skin_checked="1">
-                                <div class="swiper-wrapper" id="swiper-wrapper-16108efccef7d1add" aria-live="polite"
-                                    bis_skin_checked="1">
-                                    <div class="swiper-slide swiper-slide-active"
-                                        style="width: 438px; margin-right: 1px;" role="group" aria-label="1 / 4"
-                                        bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Tải ứng dụng miễn phí bằng cách tìm kiếm từ khóa
-                                            "VinClub" trên App Store hoặc Google Play</p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/tai-va-dang-ky-1-v2.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                    <div class="swiper-slide swiper-slide-next" style="width: 438px; margin-right: 1px;"
-                                        role="group" aria-label="2 / 4" bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Nhập số điện thoại hoặc email và nhấn tiếp tục.
-                                        </p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/tai-va-dang-ky-2-v2.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                    <div class="swiper-slide" style="width: 438px; margin-right: 1px;" role="group"
-                                        aria-label="3 / 4" bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Nhập mã xác thực được gửi đến số điện thoại hoặc
-                                            email vừa nhập</p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/tai-va-dang-ky-3-v2.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                    <div class="swiper-slide" role="group" aria-label="4 / 4"
-                                        style="width: 438px; margin-right: 1px;" bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Bổ sung thông tin tài khoản</p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/tai-va-dang-ky-4-v2.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                </div>
-                                <button type="button" role="button"
-                                    class="swiper-button-prev swiper-button-disabled nav-button-prev"
-                                    aria-label="Previous"></button>
-                                <button type="button" role="button"
-                                    class="swiper-button-next swiper-button-disabled nav-button-next"
-                                    aria-label="Next"></button>
-                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            <div class="step-item" [class.active]="activeStep === 2" (click)="setActiveStep(2)">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Nhấn vào và cho phép tải về</div>
+                            </div>
+                            <div class="step-item" [class.active]="activeStep === 3" (click)="setActiveStep(3)">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Nhập mã xác thực được gửi đến số điện thoại hoặc email vừa nhập</div>
+                            </div>
+                            <div class="step-item" [class.active]="activeStep === 4" (click)="setActiveStep(4)">
+                                <div class="step-number">4</div>
+                                <div class="step-text">Bổ sung thông tin tài khoản</div>
                             </div>
                         </div>
                     </div>
-                    <div id="tab-guide2" class="tab-content" bis_skin_checked="1">
-                        <div class="tab-content__body" bis_skin_checked="1">
-                            <div class="swiper slider-guide-thumb slider-guide-thumb-2 swiper-initialized swiper-vertical swiper-free-mode swiper-watch-progress swiper-thumbs"
-                                bis_skin_checked="1">
-                                <div class="swiper-wrapper" id="swiper-wrapper-056dfaae416210edb" aria-live="polite"
-                                    bis_skin_checked="1" style="transition-duration: 0ms;">
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <span class="swiper-slide__number">1</span>
-                                        <span class="swiper-slide__text">Truy cập màn hình tài khoản</span>
-                                    </div>
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <span class="swiper-slide__number">2</span>
-                                        <span class="swiper-slide__text">Bấm vào "Liên kết tài khoản thương hiệu" trong
-                                            danh mục Cài
-                                            đặt</span>
-                                    </div>
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <span class="swiper-slide__number">3</span>
-                                        <span class="swiper-slide__text">Nhập email/số điện thoại đã từng đăng ký tài
-                                            khoản tại các thương
-                                            hiệu</span>
-                                    </div>
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <span class="swiper-slide__number">4</span>
-                                        <span class="swiper-slide__text">Nhập mã OTP xác minh email/số điện thoại vừa
-                                            nhập</span>
-                                    </div>
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <span class="swiper-slide__number">5</span>
-                                        <span class="swiper-slide__text">Xác nhận liên kết</span>
-                                    </div>
-                                </div>
-                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+
+                <div id="tab-guide2" class="tab-content">
+                    <div class="tab-content__body">
+                        <div class="guide-steps">
+                            <div class="step-line"></div>
+                            <div class="step-item" [class.active]="activeStep === 1" (click)="setActiveStep(1)">
+                                <div class="step-number">1</div>
+                                <div class="step-text">Truy cập màn hình tài khoản</div>
                             </div>
-                            <div class="swiper slider-guide-content slider-guide-content-2 swiper-initialized swiper-horizontal"
-                                bis_skin_checked="1">
-                                <div class="swiper-wrapper" id="swiper-wrapper-136c9df8cbbcd098" aria-live="polite"
-                                    bis_skin_checked="1" style="transition-duration: 0ms;">
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Truy cập màn hình tài khoản</p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/lien-ket-thuong-hieu-1-v3.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Truy cập màn hình tài khoản</p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/lien-ket-thuong-hieu-2-v5.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Nhập email/số điện thoại đã từng đăng ký tài khoản
-                                            tại các thương hiệu
-                                        </p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/lien-ket-thuong-hieu-3-v3.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Nhập mã OTP xác minh email/số điện thoại vừa nhập
-                                        </p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/lien-ket-thuong-hieu-4-v4.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                    <div class="swiper-slide" bis_skin_checked="1">
-                                        <p class="swiper-slide__text">Xác nhận liên kết</p>
-                                        <!--<p class="swiper-slide__image">
-                                        <img src="/static/img/vi/lien-ket-thuong-hieu-5-v2.png" width="428" height="866" alt="Image">
-                                    </p>-->
-                                    </div>
-                                </div>
-                                <button type="button" role="button"
-                                    class="swiper-button-prev swiper-button-disabled nav-button-prev"
-                                    aria-label="Previous"></button>
-                                <button type="button" role="button"
-                                    class="swiper-button-next swiper-button-disabled nav-button-next"
-                                    aria-label="Next"></button>
-                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                            <div class="step-item" [class.active]="activeStep === 2" (click)="setActiveStep(2)">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Bấm vào "Liên kết tài khoản thương hiệu" trong danh mục Cài đặt</div>
+                            </div>
+                            <div class="step-item" [class.active]="activeStep === 3" (click)="setActiveStep(3)">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Nhập email/số điện thoại đã từng đăng ký tài khoản tại các thương hiệu</div>
+                            </div>
+                            <div class="step-item" [class.active]="activeStep === 4" (click)="setActiveStep(4)">
+                                <div class="step-number">4</div>
+                                <div class="step-text">Nhập mã OTP xác minh email/số điện thoại vừa nhập</div>
+                            </div>
+                            <div class="step-item" [class.active]="activeStep === 5" (click)="setActiveStep(5)">
+                                <div class="step-number">5</div>
+                                <div class="step-text">Xác nhận liên kết</div>
                             </div>
                         </div>
                     </div>
@@ -788,257 +669,26 @@
                 <a class="text-link" href="tel:1900955551" id="hotlineLink">1900-999-911</a>
             </p>
             <div class="section-faq__content" bis_skin_checked="1">
-                <div class="accordion" bis_skin_checked="1">
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">1. Ai có thể trở thành thành viên của VinClub?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
+                <div class="accordion" [class.expanded]="isExpanded">
+                    <div class="accordion-item" *ngFor="let item of faqItems; let i = index">
+                        <div class="accordion-header" (click)="toggleAccordion(i)">
+                            <p class="accordion-title">{{item.question}}</p>
+                            <i class="ti" [class.ti-plus]="activeAccordion !== i" [class.ti-minus]="activeAccordion === i"></i>
                         </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Đối tượng tham gia là quản lý cấp cao và đối tác chiến lược của Tập đoàn, không giới hạn
-                                về quốc tịch và việc tham gia VinClub không trái với pháp luật của nước sở tại
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">2. Cách đăng ký và đăng nhập VinClub?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p><strong>Cách đăng ký tài khoản trên ứng dụng VinClub:</strong>
-                            </p>
-
-                            <ul>
-                                <li>B1: Tải ứng dụng VinClub tại link: <a href="/download">Tại Đây</a> </li>
-                                <li>B2: Đăng ký tài khoản VinClub bằng mã tham chiếu</li>
-                                <li>B3: Điển các thông tin cần thiết theo yêu cầu</li>
-                                <li>B4: Thiết lập thông tin cá nhân gồm Họ tên, Số điện thoại và Hoàn tất đăng ký</li>
-                            </ul>
-
-                            <p><strong>Cách đăng nhập tài khoản trên ứng dụng VinClub:</strong>
-                            </p>
-                            <ul>
-                                <li>B1: Nhập tên đăng nhập đã đăng ký trước đó </li>
-                                <li>B2: Nhập mật khẩu đã đăng ký </li>
-                                <li>B3: Ấn đăng nhập để truy cập</li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">3. Khi giao dịch đạt mức điều kiện xét hạng, tôi làm gì để hệ
-                                thống ghi nhận việc lên hạng?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Thành viên VinClub chỉ cần đạt đủ doanh số điều kiện nâng hạng tại 1 trong 6 hạng mục
-                                hàng hóa/dịch vụ quy định cụ thể tại Điều Khoản và Điều Kiện của Chương Trình sẽ được hệ
-                                thống tự động ghi nhận nâng hạng. Trong trường hợp
-                                đã đạt đủ điều kiện nâng hạng mà vẫn chưa được hệ thống ghi nhận, khách hàng vui lòng
-                                liên hệ hotline <span id="hotlineNumber" style="white-space: nowrap">1900-999-911</span>
-                                để được hỗ trợ.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">4. Tôi được tích VPoint khi nào?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Thành viên VinClub hạng Vàng (Gold) trở lên được tích VPoint khi đã hoàn thành thanh toán
-                                cho các giao dịch mua hàng hóa, dịch vụ của các đối tác tham gia Chương Trình, bao gồm:
-                            </p>
-                            <ul>
-                                <li>Hàng hóa, dịch vụ của VinFast;</li>
-                                <li>Dịch vụ khám, chữa bệnh của Vinmec;</li>
-                                <li>Bất động sản mang thương hiệu Vinhomes;</li>
-                                <li>Dịch vụ nghỉ dưỡng và vui chơi giải trí Vinpearl/VinWonders/Vinpearl Golf;</li>
-                                <li>Hàng hóa, dịch vụ giáo dục Vinschool;</li>
-                                <li>Dịch vụ vận tải Xanh SM.</li>
-                            </ul>
-                            <p>Đối tác tham gia Chương Trình bao gồm Vingroup, các công ty thành viên của Vingroup, và
-                                các đối tác của công ty có thỏa thuận tham gia Chương Trình. </p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">5. Điểm VPoint có thể sử dùng vào những việc gì?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Thành viên có thể sử dụng VPoint để: </p>
-                            <ul>
-                                <li>Mua, quy đổi thành quà tặng, sản phẩm, dịch vụ, hoặc phiếu khuyến mại, ưu đãi
-                                    (voucher) đối tác tham gia Chương Trình cung cấp;</li>
-                                <li>Tặng, cho các thành viên khác; hoặc</li>
-                                <li>Phục vụ các mục đích, hoạt động khác theo thông báo, phổ biến trên các kênh của
-                                    VinClub, tùy từng thời điểm.</li>
-                            </ul>
-                            <p><strong>*Lưu ý:</strong> Quý khách hàng vui lòng đọc kỹ các điều khoản loại trừ (nếu có)
-                                khi áp dụng tiêu VPoint của từng đối tác của Chương Trình.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">6. Căn cứ tích VPoint là giá trên hóa đơn hay giá bán?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Căn cứ tích VPoint dựa trên giá trên hóa đơn đã bao gồm thuế GTGT, sau khi đã khấu trừ
-                                chiết khấu/khuyến mại khác (nếu có) theo chính sách bán hàng của các đối tác tham gia
-                                Chương Trình.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">7. Những trường hợp nào <strong>KHÔNG</strong> áp dụng được chính
-                                sách tích VPoint?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Những trường hợp không được áp dụng chính sách tích VPoint:</p>
-                            <ul>
-                                <li>Khách hàng không phải thành viên của VinClub;</li>
-                                <li>Khách hàng là thành viên VinClub nhưng chưa đạt hạng thành viên Gold trở lên;</li>
-                                <li>Với thương hiệu Vinhomes: Các sản phẩm/dịch vụ không phải là giao dịch Bất động sản;
-                                </li>
-                                <li>
-                                    <p>Với thương hiệu Vinmec: </p>
-                                    <ul style="list-style-type: none">
-                                        <li>- Sản phẩm/dịch vụ y tế bị khống chế giá bán/khống chế tỷ lệ lợi nhuận;</li>
-                                        <li>- Phần doanh thu được chi trả bởi bên thứ ba;</li>
-                                        <li>- Các dịch vụ y tế cung cấp bởi đối tác hợp tác với Vinmec, đối tác đồng
-                                            thương hiệu;</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <p>Với thương hiệu Xanh SM: </p>
-                                    <ul style="list-style-type: none">
-                                        <li>- Khách hàng thanh toán bằng tài khoản thẻ doanh nghiệp, Xanh E-Card;</li>
-                                        <li>- Khách hàng sử dụng các dịch vụ Xanh Tour, Xanh Airport, Xanh đường dài,
-                                            Xanh Partner, đặt xe Xanh qua nền tảng đối tác; và</li>
-                                        <li>- Khách hàng thanh toán tip, bảo hiểm và các loại phụ phí khác do Xanh SM
-                                            thu hộ chi hộ, hoặc các chi phí phụ trội phát sinh sau thời điểm đặt cuốc đi
-                                            trên ứng dụng (phụ phí giờ chờ, phụ phí km…).</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Với thương hiệu Vinschool: học phí trước năm học 2025 - 2026 và các khoản không phải
-                                    là học phí.
-                                </li>
-                                <li>
-                                    Với Vinpearl: Các dịch vụ được đặt lẻ từ nhà cung cấp ngoài như vé tàu hỏa, tour, vé
-                                    tàu biển,... hoặc các dịch vụ được đặt từ đại lý.
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">8. Thời hạn sử dụng VPoint?
-                            </p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>VPoint không có giới hạn thời hạn sử dụng.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">9. Thành viên VinClub được tiêu tối đa bao nhiêu VPoint trong mỗi
-                                lần giao dịch?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Thành viên được tiêu toàn bộ số VPoint khả dụng hiện đang sở hữu, không giới hạn và không
-                                cần giữ lại VPoint tối thiểu.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">10. Quyền lợi khác ngoài tích, tiêu VPoint khi là thành viên của
-                                VinClub</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Ngoài các quyền lợi tài chính nhận được khi là thành viên của VinClub, thành viên còn
-                                nhận được những quyền lợi phi tài chính hấp dẫn khác từ đối tác của Chương Trình. Chi
-                                tiết các đặc quyền phi tài chính sẽ được VinClub công
-                                bố trong thời gian sớm nhất.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">11. Thành viên VinClub là người nước ngoài có được hưởng đầy đủ
-                                quyền lợi, ưu đãi hay không?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Người nước ngoài được hưởng đầy đủ quyền lợi ưu đãi thành viên VinClub, áp dụng trên lãnh
-                                thổ Việt Nam.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">12. Tôi có thể tìm kiếm thông tin chính thức về VinClub ở đâu?
-                            </p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Thành viên có thể cập nhật các thông tin chính thức và mới nhất về VinClub tại: </p>
-                            <ul>
-                                <li>Website: <a href="/">VinClub</a>
-                                <li>Ứng dụng di động VinClub; hoặc</li>
-                                <li id="footerInfoList">
-                                <li>Hotline: 1900-999-911.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">13. Thẻ VinClub có in ra được không hay chỉ có trên app?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Hướng tới việc bảo vệ môi trường cũng như đảm bảo thuận tiện cho thành viên, VinClub chỉ
-                                cung cấp thẻ điện tử trên các nền tảng của VinClub.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">14. Tôi cần làm gì để liên kết tài khoản VinClub với các thương
-                                hiệu mà tôi sở hữu?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Để liên kết tài khoản VinClub với các tài khoản mà khách hàng đang sở hữu tại các đối tác
-                                của Chương Trình (VinFast, Vinhomes, Vinpearl, Vinmec, Vinschool, Xanh SM), khách hàng
-                                cần sử dụng đúng số điện thoại hoặc email mà khách
-                                hàng đã dùng để đăng ký các tài khoản đó để đăng ký tài khoản VinClub. Trường hợp có nhu
-                                cầu thay đổi số điện thoại hoặc email khác, khách hàng cần đồng thời cập nhật với các
-                                đối tác tương ứng để được đồng bộ thông tin
-                                và quyền lợi.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" bis_skin_checked="1">
-                        <div class="accordion-header" bis_skin_checked="1">
-                            <p class="accordion-title">15. Các giao dịch mua hàng trước 8/8/2024 có được tích VPoint
-                                trên VinClub hay không?</p>
-                            <i class="ti ti-plus accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content" bis_skin_checked="1">
-                            <p>Các giao dịch mua hàng trước ngày 8/8/2024 chỉ được sử dụng để xét hạng thành viên, không
-                                được tích VPoint.</p>
+                        <div class="accordion-content" [class.is-active]="activeAccordion === i">
+                            <p [innerHTML]="item.answer"></p>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-link btn-read-more js-read-more">
-                    <span class="read-more-text">Xem thêm</span>
-                    <i class="ti ti-chevron-down read-more-icon"></i>
-                </button>
+                <div class="read-more-wrapper">
+                    <button type="button" 
+                            class="btn-read-more" 
+                            [class.expanded]="isExpanded"
+                            (click)="toggleReadMore()">
+                            <span class="read-more-text">{{isExpanded ? 'Thu gọn' : 'Xem thêm'}}</span>
+                        <i class="ti ti-chevron-down"></i>
+                    </button>
+                </div>
             </div>
         </section>
     </main>

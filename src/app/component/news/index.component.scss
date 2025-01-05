@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: "Mulish";
     src: url("/assets/font/Mulish-Regular.ttf");
@@ -3229,7 +3228,7 @@ button.dropdown-item:hover {
     top: 0;
     width: 1536px;
     height: 1300px;
-    background: url("/assets/images/bg-visual-2.png") no-repeat top/contain;
+    background: url("/assets/images/bg-visual-2.jpg") no-repeat top/contain;
     pointer-events: none;
     z-index: 0;
 }
@@ -3570,7 +3569,7 @@ button.dropdown-item:hover {
 
 .section-faq .accordion {
     overflow: hidden;
-    max-height: 440px;
+
 }
 
 .section-faq .accordion.is-active {
@@ -3932,4 +3931,328 @@ button.dropdown-item:hover {
     .section-voucher__list {
         gap: 24px;
     }
+}
+
+.section-guide {
+  padding: 60px 0;
+  background: #191616;
+  
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+    font-size: 32px;
+  }
+
+  &__content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+.tabs {
+  margin-bottom: 30px;
+  
+  .tab-guide {
+    display: flex;  
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 40px;
+    margin-left: 30px;
+    
+    .tab-item {
+      .tab-link {
+        color: #989CAB;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 10px 20px;
+        border-bottom: 2px solid transparent;
+        
+        &:hover {
+          color: white;
+        }
+      }
+      
+      &.is-active {
+        .tab-link {
+          color: white;
+          border-bottom-color: #C89F63;
+        }
+      }
+    }
+  }
+}
+
+.tab-content {
+  display: none;
+  
+  &.is-active {
+    display: block;
+  }
+}
+
+.guide-steps {
+  max-width: 400px;
+
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+    cursor: pointer;
+    
+    .step-number {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+      border-radius: 50%;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .step-text {
+      flex: 1;
+      padding-top: 4px;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    
+    &.active {
+      .step-number {
+        background: #C89F63;
+        color: white;
+      }
+      
+      .step-text {
+        color: #000;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.guide-header {
+  display: flex;
+  margin-bottom: 30px;
+  
+  .guide-tab {
+    position: relative;
+    padding: 12px 60px; // Tăng padding lên nhiều hơn
+    background: #f5f5f5;
+    color: #666;
+    cursor: pointer;
+    font-size: 16px;
+    
+    &:first-child {
+      background: #C89F63;
+      color: white;
+      
+      &:after {
+        content: '';
+        position: absolute;
+        right: -24px; // Điều chỉnh vị trí mũi tên
+        top: 0;
+        border-top: 24px solid transparent;
+        border-bottom: 24px solid transparent;
+        border-left: 24px solid #C89F63;
+        z-index: 1;
+      }
+    }
+    
+    &:last-child {
+      background: #f5f5f5;
+      padding-left: 70px; // Tăng padding left
+      margin-left: -10px; // Điều chỉnh khoảng cách
+      
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-top: 24px solid transparent;
+        border-bottom: 24px solid transparent;
+        border-left: 24px solid white;
+      }
+    }
+  }
+}
+
+.guide-steps {
+  position: relative;
+  padding-left: 20px;
+  
+  // Thêm line dọc
+  .step-line {
+    position: absolute;
+    left: 34px;
+    top: 30px;
+    bottom: 30px;
+    width: 2px;
+    background-color: #f5f2f2;
+  }
+  
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 9px 0;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 10px;
+    
+    .step-number {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+      border-radius: 50%;
+      color: #666;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .step-text {
+      flex: 1;
+      padding-top: 4px;
+      color: #414141;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    
+    &.active {
+      .step-number {
+        background: #C89F63;
+        color: white;
+      }
+      
+      .step-text {
+        color: #000;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.accordion {
+  .accordion-item {
+    border-bottom: 1px solid #eee;
+    border-top: none;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      cursor: pointer;
+      
+      .accordion-title {
+        margin: 0;
+        font-size: 16px;
+      }
+      
+      .ti {
+        transition: transform 0.3s ease;
+        
+        &.ti-minus {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      
+      &.is-active {
+        max-height: 2000px; // Đặt giá trị đủ lớn để chứa content
+        opacity: 1;
+        padding: 0 0 15px;
+      }
+      
+      p {
+        height: auto;
+        margin: 0;
+        opacity: 1;
+      }
+
+      
+    }
+  }
+}
+
+.accordion {
+  max-height: 388px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  
+  &.expanded {
+    max-height: none;
+  }
+}
+
+.read-more-wrapper {
+  position: relative;
+  text-align: left;
+  margin-top: 20px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+    pointer-events: none;
+  }
+}
+
+.btn-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 15px;
+
+
+  &:hover {
+    color: #C89F63;
+  }
+  
+  .read-more-text {
+    font-weight: 500;
+    text-decoration: #000;
+    text-decoration: underline;
+  }
+  
+  .ti-chevron-down {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  &.expanded {
+    .ti-chevron-down {
+      transform: rotate(180deg);
+    }
+  }
 }
