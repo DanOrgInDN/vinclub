@@ -6,6 +6,7 @@ import { UserInfo } from '../../../../model/user.model';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { NotificationService } from '../../../../shared/notification/services/notification.service';
+import { AlertService } from '../../../../shared/alert/services/alert.service';
 
 @Component({
   selector: 'app-user-management',
@@ -25,7 +26,11 @@ export class UserManagementComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   private searchSubject = new Subject<string>();
 
-  constructor(private adminService: AdminService, private notificationService: NotificationService) { }
+  constructor(
+    private adminService: AdminService,
+    private notificationService: NotificationService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     this.loadAllUsers();
@@ -112,18 +117,28 @@ export class UserManagementComponent implements OnInit, OnDestroy {
   // }
 
   deleteUser(userId: string) {
-    this.adminService.deleteUser(userId).subscribe({
-      next: (response: any) => {
-        if (response.result_code === 1) {
-          this.loadAllUsers();
-          this.notificationService.showSuccess('Xóa tài khoản thành công');
-        } else {
+    this.alertService.show('Bạn có chắc chắn muốn xóa tài khoản này?', 'warning');
+
+    const subscription = this.alertService.onConfirm$.subscribe(() => {
+      this.adminService.deleteUser(userId).subscribe({
+        next: (response: any) => {
+          if (response.result_code === 1) {
+            this.loadAllUsers();
+            this.notificationService.showSuccess('Xóa tài khoản thành công');
+          } else {
+            this.notificationService.showError('Xóa tài khoản thất bại');
+          }
+        },
+        error: (error) => {
           this.notificationService.showError('Xóa tài khoản thất bại');
         }
-      },
-      error: (error) => {
-        this.notificationService.showError('Xóa tài khoản thất bại');
-      }
+      });
+      
+      subscription.unsubscribe();
+    });
+
+    this.alertService.onCancel$.subscribe(() => {
+      subscription.unsubscribe();
     });
   }
 

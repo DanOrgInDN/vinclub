@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { AdminService } from '../admin.service';
 import { Recharge } from '../../../../model/transaction.model';
 import { NotificationService } from '../../../../shared/notification/services/notification.service';
+import { AlertService } from '../../../../shared/alert/services/alert.service';
 
 @Component({
   selector: 'app-deposit-management',
@@ -24,7 +25,11 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   private searchSubject = new Subject<string>();
 
-  constructor(private adminService: AdminService, private notificationService: NotificationService) { }
+  constructor(
+    private adminService: AdminService,
+    private notificationService: NotificationService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     this.loadAllDeposits();
@@ -105,18 +110,28 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
   }
 
   rejectDeposit(id: string) {
-    this.adminService.rejectDeposit(id).subscribe({
-      next: (response: any) => {
-        if (response.result_code === 1) {
-          this.loadAllDeposits();
-          this.notificationService.showSuccess('Từ chối giao dịch thành công');
-        } else {
+    this.alertService.show('Bạn có chắc chắn muốn từ chối giao dịch nạp tiền này?', 'warning');
+
+    const subscription = this.alertService.onConfirm$.subscribe(() => {
+      this.adminService.rejectDeposit(id).subscribe({
+        next: (response: any) => {
+          if (response.result_code === 1) {
+            this.loadAllDeposits();
+            this.notificationService.showSuccess('Từ chối giao dịch thành công');
+          } else {
+            this.notificationService.showError('Từ chối giao dịch thất bại');
+          }
+        },
+        error: (error) => {
           this.notificationService.showError('Từ chối giao dịch thất bại');
         }
-      },
-      error: (error) => {
-        this.notificationService.showError('Từ chối giao dịch thất bại');
-      }
+      });
+      
+      subscription.unsubscribe();
+    });
+
+    this.alertService.onCancel$.subscribe(() => {
+      subscription.unsubscribe();
     });
   }
 }

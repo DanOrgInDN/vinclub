@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { AdminService } from '../admin.service';
 import { Withdrawal } from '../../../../model/transaction.model';
 import { NotificationService } from '../../../../shared/notification/services/notification.service';
+import { AlertService } from '../../../../shared/alert/services/alert.service';
 
 @Component({
   selector: 'app-withdrawal-management',
@@ -24,7 +25,11 @@ export class WithdrawalManagementComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   private searchSubject = new Subject<string>();
 
-  constructor(private adminService: AdminService, private notificationService: NotificationService) { }
+  constructor(
+    private adminService: AdminService,
+    private notificationService: NotificationService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     this.loadAllWithdrawals();
@@ -102,18 +107,28 @@ export class WithdrawalManagementComponent implements OnInit, OnDestroy {
   }
 
   rejectWithdrawal(id: string) {
-    this.adminService.rejectWithdrawal(id).subscribe({
-      next: (response: any) => {
-        if (response.result_code === 1) {
-          this.loadAllWithdrawals();
-          this.notificationService.showSuccess('Từ chối rút tiền thành công');
-        } else {
+    this.alertService.show('Bạn có chắc chắn muốn từ chối yêu cầu rút tiền này?', 'warning');
+
+    const subscription = this.alertService.onConfirm$.subscribe(() => {
+      this.adminService.rejectWithdrawal(id).subscribe({
+        next: (response: any) => {
+          if (response.result_code === 1) {
+            this.loadAllWithdrawals();
+            this.notificationService.showSuccess('Từ chối rút tiền thành công');
+          } else {
+            this.notificationService.showError('Từ chối rút tiền thất bại');
+          }
+        },
+        error: (error) => {
           this.notificationService.showError('Từ chối rút tiền thất bại');
         }
-      },
-      error: (error) => {
-        this.notificationService.showError('Từ chối rút tiền thất bại');
-      }
+      });
+      
+      subscription.unsubscribe();
+    });
+
+    this.alertService.onCancel$.subscribe(() => {
+      subscription.unsubscribe();
     });
   }
 }

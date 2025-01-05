@@ -1,0 +1,12 @@
+<div class="alert-overlay" (click)="onOverlayClick($event)" *ngIf="show">
+    <div class="alert" [ngClass]="type">
+      <div class="alert-content">
+        <i [class]="iconClass"></i>
+        <span class="alert-message">{{ message }}</span>
+      </div>
+      <div class="alert-actions">
+        <button class="alert-btn cancel" (click)="onCancel()">Hủy</button>
+        <button class="alert-btn confirm" (click)="onConfirm()">Xác nhận</button>
+      </div>
+    </div>
+  </div>
