@@ -1,15 +1,12 @@
 <div class="deposit-management">
-    <div class="header">    
-        <div class="title">Quản lý nạp tiền</div>
-    </div>
     <!-- Search Section -->
     <div class="search-section">
       <input 
         type="text" 
         [(ngModel)]="searchTerm"
-        placeholder="Tìm kiếm theo số điện thoại..."
-        (keyup.enter)="searchDeposits()">
-      <button (click)="searchDeposits()">Tìm kiếm</button>
+        (ngModelChange)="searchDeposits()"
+        placeholder="Tìm kiếm theo tên tài khoản..."
+      >
     </div>
   
     <!-- Deposits Table -->
@@ -17,7 +14,9 @@
       <table>
         <thead>
           <tr>
-            <th>Số điện thoại</th>
+            <th>Tên tài khoản</th>
+            <th>Số tài khoản</th>
+            <th>Ngân hàng</th>
             <th>Số tiền</th>
             <th>Ngày tạo</th>
             <th>Trạng thái</th>
@@ -26,9 +25,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let deposit of deposits">
-            <td>{{deposit.phone}}</td>
+            <td>{{deposit.accountName}}</td>
+            <td>{{deposit.accountNumber}}</td>
+            <td>{{deposit.bankName}}</td>
             <td>{{deposit.amount}} VND</td>
-            <td>{{deposit.createdAt | date:'dd/MM/yyyy HH:mm'}}</td>
+            <td>{{deposit.createdDate | date:'dd/MM/yyyy HH:mm'}}</td>
             <td>{{deposit.status}}</td>
             <td>
               <button 
@@ -47,5 +48,26 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button 
+          [disabled]="currentPage === 1"
+          (click)="changePage(currentPage - 1)"
+          class="page-btn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <span class="page-info">
+          Trang {{currentPage}} / {{totalPages}}
+        </span>
+        
+        <button 
+          [disabled]="currentPage === totalPages"
+          (click)="changePage(currentPage + 1)"
+          class="page-btn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
   </div>

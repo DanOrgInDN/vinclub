@@ -32,6 +32,8 @@
   
     .table-container {
       overflow-x: auto;
+      position: relative;
+      padding-bottom: 60px;
   
       table {
         width: 100%;
@@ -68,6 +70,47 @@
           &:hover { background: #c82333; }
         }
       }
+  
+      .pagination {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        background: #fff;
+        border-top: 1px solid #eee;
+        
+        .page-btn {
+          padding: 6px 12px;
+          border: 1px solid #ddd;
+          background: #fff;
+          border-radius: 4px;
+          cursor: pointer;
+          margin: 0 5px;
+          
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+          
+          &:not(:disabled):hover {
+            background: #f8f9fa;
+          }
+
+          i {
+            font-size: 14px;
+          }
+        }
+        
+        .page-info {
+          margin: 0 15px;
+          font-size: 14px;
+          color: #666;
+        }
+      }
     }
   
     @media (max-width: 768px) {
@@ -98,6 +141,23 @@
           .approve-btn, .reject-btn {
             padding: 4px 8px;
             font-size: 12px;
+          }
+        }
+  
+        .pagination {
+          padding: 10px;
+          
+          .page-btn {
+            padding: 4px 8px;
+            
+            i {
+              font-size: 12px;
+            }
+          }
+          
+          .page-info {
+            font-size: 12px;
+            margin: 0 10px;
           }
         }
       }

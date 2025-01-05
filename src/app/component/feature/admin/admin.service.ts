@@ -6,18 +6,30 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdminService {
-    private apiUrl = environment.apiUrl + '/admin';
+    private apiUrl = environment.apiUrl;
     constructor( private http: HttpClient ) { }
 
     getAllUsers(data: any) {
-        return this.http.post(this.apiUrl + '/user/all', data);
+        return this.http.post(this.apiUrl + '/admin/user/all', data);
     }
 
     activateUser(userId: string) {
-        return this.http.patch(this.apiUrl + '/activate/' + userId, {});
+        return this.http.patch(this.apiUrl + '/admin/activate/' + userId, {});
     }
 
     deleteUser(userId: string) {
-        return this.http.delete(this.apiUrl + '/delete/' + userId);
+        return this.http.delete(this.apiUrl + '/admin/delete/' + userId);
+    }
+
+    getDepositsPending(data: any) {
+        return this.http.get(this.apiUrl + '/deposit/pending');
+    }
+
+    approveDeposit(depositId: string) {
+        return this.http.patch(this.apiUrl + '/deposit/approve/' + depositId, {});
+    }
+
+    rejectDeposit(depositId: string) {
+        return this.http.patch(this.apiUrl + '/deposit/reject/' + depositId, {});
     }
 }
