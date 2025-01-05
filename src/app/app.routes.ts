@@ -14,6 +14,8 @@ import { TransactionHistoryComponent } from './component/feature/home/transactio
 import { ProfileComponent } from './component/feature/home/profile/profile.component';
 import { AppInfoComponent } from './component/feature/home/app-info/app-info.component';
 import { NewsComponent } from './component/feature/home/news/news.component';
+import { IndexComponent } from './component/news/index.component';
+import { DownloadComponent } from './component/news/download/download.component';
 
 export const routes: Routes = [
     {
@@ -89,5 +91,13 @@ export const routes: Routes = [
         path: 'vinclub/admin',
         loadChildren: () => import('./component/feature/admin/admin.routes')
           .then(m => m.adminRoutes)
+    },
+    {
+        path: 'index',
+        component: IndexComponent
+    },
+    {
+        path: 'download',
+        component: DownloadComponent
     }
 ];
