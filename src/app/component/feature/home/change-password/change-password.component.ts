@@ -3,6 +3,9 @@ import { NavComponent } from '../../../layout/nav/nav.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
+import { NotificationService } from '../../../../shared/notification/services/notification.service';
+import { AuthService } from '../../../../services/auth/auth.service';
+import { LoginService } from '../../../../services/login/login.service';
 
 @Component({
   selector: 'app-change-password',
@@ -19,7 +22,7 @@ export class ChangePasswordComponent {
   showConfirmPassword = false;
   errorMessage = '';
 
-  constructor(private location: Location) {}  
+  constructor(private location: Location, private loginService: LoginService, private notificationService: NotificationService, private authService: AuthService   ) {}  
 
   togglePasswordVisibility(field: 'old' | 'new' | 'confirm') {
     switch(field) {
@@ -78,11 +81,33 @@ export class ChangePasswordComponent {
     return true;
   }
 
+  initForm() {
+    this.oldPassword = '';
+    this.newPassword = '';
+    this.confirmPassword = '';
+    this.showOldPassword = false;
+    this.showNewPassword = false;
+    this.showConfirmPassword = false;
+  }
+
   onSubmit() {
     if (this.validatePasswords()) {
-      // Xử lý thay đổi mật khẩu nếu validation thành công
-      console.log('Password validation successful');
-    }
+      const data = {
+        username: this.authService.username,
+        oldPassword: this.oldPassword,
+        newPassword: this.newPassword
+      }
+      this.loginService.changePassword(data).subscribe({
+        next: (response: any) => {
+          if (response.result_code === 1) {
+            this.initForm();
+            this.notificationService.showSuccess('Thay đổi mật khẩu thành công');
+          } else {
+            this.notificationService.showError('Thay đổi mật khẩu thất bại');
+          }
+        }
+      });
+    }   
   }
 
   goBack() {

@@ -44,6 +44,17 @@ export class AuthService {
     return null;
   }
 
+  get username(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      const user = localStorage.getItem('user');
+      if (user) {
+        const userInfo: UserInfo = JSON.parse(user);
+        return userInfo.username;
+      }
+    }
+    return null;
+  }
+
   get currentUserValue(): UserInfo | null {
     if (isPlatformBrowser(this.platformId)) {
       const user = localStorage.getItem('user');
