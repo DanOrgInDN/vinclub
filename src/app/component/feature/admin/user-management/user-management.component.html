@@ -1,50 +1,70 @@
 <div class="user-management">
-    <!-- Search Section -->
-    <div class="search-section">
-      <input 
-        type="text" 
-        [(ngModel)]="searchTerm"
-        placeholder="Tìm kiếm theo số điện thoại..."
-        (keyup.enter)="searchUsers()">
-      <button (click)="searchUsers()">Tìm kiếm</button>
-    </div>
-  
-    <!-- Users Table -->
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Số điện thoại</th>
-            <th>Họ tên</th>
-            <th>Email</th>
-            <th>Số dư</th>
-            <th>Trạng thái</th>
-            <th>Thao tác</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{user.phone}}</td>
-            <td>{{user.fullName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.balance}} VND</td>
-            <td>{{user.status}}</td>
-            <td>
-              <button 
-                *ngIf="user.status === 'INACTIVE'"
-                (click)="activateUser(user.id)"
-                class="activate-btn">
-                Kích hoạt
-              </button>
-              <button 
-                *ngIf="user.status === 'ACTIVE'"
-                (click)="deactivateUser(user.id)"
-                class="deactivate-btn">
-                Vô hiệu hóa
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- Search Section -->
+  <div class="search-section">
+    <input 
+      type="text" 
+      [(ngModel)]="searchTerm" 
+      (ngModelChange)="searchUsers()"
+      placeholder="Tìm kiếm theo số điện thoại..."
+    >
+  </div>
+
+  <!-- Users Table -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Số điện thoại</th>
+          <th>Tài khoản</th>
+          <th>Họ tên</th>
+          <th>Email</th>
+          <th>Số dư</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user?.phone}}</td>
+          <td>{{user?.username}}</td>
+          <td>{{user?.fullName}}</td>
+          <td>{{user?.email}}</td>
+          <td>{{user?.totalAmount || 0}} VND</td>
+          <td>{{user?.activated ? 'Kích hoạt' : 'Vô hiệu hóa'}}</td>
+          <td>
+            <button *ngIf="user.activated === false" (click)="activateUser(user.userId)" class="activate-btn">
+              Kích hoạt
+            </button>
+            <button *ngIf="user.activated === true" (click)="deactivateUser(user.userId)" class="deactivate-btn">
+              Vô hiệu hóa
+            </button>
+            <button (click)="deleteUser(user.userId)" class="delete-btn">
+              Xóa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Pagination -->
+    <div class="pagination">
+      <button 
+        [disabled]="currentPage === 1"
+        (click)="changePage(currentPage - 1)"
+        class="page-btn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <span class="page-info">
+        Trang {{currentPage}} / {{totalPages}}
+      </span>
+      
+      <button 
+        [disabled]="currentPage === totalPages"
+        (click)="changePage(currentPage + 1)"
+        class="page-btn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
   </div>
+</div>
