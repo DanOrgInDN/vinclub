@@ -26,6 +26,8 @@ export class AuthService {
     return this.isAuthenticatedSubject.asObservable();
   }
 
+  
+
   get token(): string | null {
     if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem('token');
@@ -100,5 +102,32 @@ export class AuthService {
     localStorage.removeItem('user');
     this.currentUserSubject.next(null);
     this.isAuthenticatedSubject.next(false);
+  }
+
+  checkTokenExpired(): Observable<boolean> {
+    const currentToken = this.token;
+    if (!currentToken) {
+      return new Observable(observer => {
+        observer.next(true); // Token không tồn tại xem như đã expired
+        observer.complete();
+      });
+    }
+
+    return this.http.post<boolean>(`${environment.apiUrl}/un_auth/token/check-expire/${currentToken}`, {});
+  }
+
+  // Phương thức tiện ích để check token trước khi thực hiện các request quan trọng
+  async validateTokenBeforeAction(): Promise<boolean> {
+    try {
+      const isExpired = await this.checkTokenExpired().toPromise();
+      if (isExpired) {
+        this.logout(); // Tự động logout nếu token expired
+        return false;
+      }
+      return true;
+    } catch (error) {
+      this.logout(); // Logout nếu có lỗi
+      return false;
+    }
   }
 }
