@@ -6,6 +6,7 @@ export interface AuthResponse {
         userId: string;
         username: string;
         roleId: string;
+        roleName: string;
     }
     result_message: string;
 }
