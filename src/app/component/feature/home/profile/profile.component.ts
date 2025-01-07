@@ -90,15 +90,15 @@ export class ProfileComponent implements OnInit {
           this.userInfo = response.result_data;
           console.log(this.userInfo);
           this.getAvatar(this.userInfo.imageUrl);
-          
+
           // Kiểm tra role và thêm menu admin
-          // if (this.userInfo.roleName === 'ADMIN') {
-          //   this.menuItems.unshift({ 
-          //     icon: 'assets/icons/ca-nhan.png', 
-          //     label: 'Quản lý', 
-          //     link: '/vinclub/admin' 
-          //   });
-          // }
+          if (this.userInfo.roleName === 'ADMIN') {
+            this.menuItems.unshift({
+              icon: 'assets/icons/ca-nhan.png',
+              label: 'Quản lý',
+              link: '/vinclub/admin'
+            });
+          }
         }
       },
       error: (error) => {
