@@ -21,7 +21,7 @@ import { DownloadComponent } from './component/news/download/download.component'
 export const routes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        component: IndexComponent
     },
     {
         path: 'vinclub',
@@ -89,11 +89,10 @@ export const routes: Routes = [
         component: NewsComponent
     },
     {
-        path: 'vinclub/admin',
+         path: 'vinclub/admin',
         loadChildren: () => import('./component/feature/admin/admin.routes')
           .then(m => m.adminRoutes),
         canActivate: [AdminGuard]
-          .then(m => m.adminRoutes)
     },
     {
         path: 'index',
