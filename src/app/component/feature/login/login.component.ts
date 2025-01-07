@@ -48,11 +48,12 @@ export class LoginComponent implements OnInit {
       fullName: ['', [Validators.required]],
       referenceCode: ['', [Validators.required]],
       phone: ['', [Validators.required]],
-      email: ['']
+      email: ['', [Validators.email]]
     }, {
       validators: this.passwordMatchValidator
     });
   }
+
 
   // Custom validator để check password match
   private passwordMatchValidator(form: FormGroup) {
@@ -67,6 +68,7 @@ export class LoginComponent implements OnInit {
     return null;
   }
 
+
   login() {
     this.loginService.login(this.formLogin.value.username, this.formLogin.value.password).subscribe({
       next: (response: any) => {
@@ -75,19 +77,23 @@ export class LoginComponent implements OnInit {
         }
       },
       error: (error) => {
-        console.log(error);
       }
     });
   }
 
   register() {
-    this.loginService.register(this.formRegister.value).subscribe({
-      next: (response) => {
+    if (this.formRegister.invalid) {
+      return;
+    } else {
+      this.loginService.register(this.formRegister.value).subscribe({
+        next: (response: any) => {
+          if (response.result_code === 1) {
         this.router.navigate(['/login']);
+       }
       },
       error: (error) => {
-        console.log(error);
       }
-    });
+      });
+    }
   }
 }

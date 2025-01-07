@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard {
+export class AdminGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router
   ) {}
 
-  canActivate() {
-    return this.authService.isAuthenticated$.pipe(
-      map(isAuthenticated => {
-        if (!isAuthenticated) {
-          this.router.navigate(['/login']);
-          return false;
-        }
-        return true;
-      })
-    );
+  async canActivate(): Promise<boolean> {
+    const currentUser = this.authService.currentUserValue;
+    if (currentUser && currentUser.roleName === 'ADMIN') {
+      return true;
+    }
+
+    this.router.navigate(['/vinclub']);
+    return false;
   }
 }

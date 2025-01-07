@@ -49,6 +49,9 @@
                 </div>
                 <div class="mb-4">
                     <input type="text" class="form-control" formControlName="email" placeholder="Email">
+                    <div class="error-message" *ngIf="formRegister.get('email')?.errors?.['email'] && formRegister.get('email')?.touched">
+                        Email không đúng định dạng
+                    </div>
                 </div>
                 
                 <button type="submit" class="btn btn-warning w-100 mb-3">Đăng ký</button>

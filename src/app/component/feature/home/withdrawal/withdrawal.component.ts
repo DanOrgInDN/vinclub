@@ -8,6 +8,7 @@ import { UserService } from '../../../../services/user/user.service';
 import { UserInfo } from '../../../../model/user.model';
 import { Withdrawal } from '../../../../model/transaction.model';
 import { WithdrawalService } from '../../../../services/withdrawal/withdrawal.service';
+import { NotificationService } from '../../../../shared/notification/services/notification.service';
 
 @Component({
   selector: 'app-withdrawal',
@@ -18,7 +19,7 @@ import { WithdrawalService } from '../../../../services/withdrawal/withdrawal.se
 export class WithdrawalComponent {
 
  
-  constructor(private location: Location, private authService: AuthService, private userService: UserService, private withdrawalService: WithdrawalService) {}
+  constructor(private location: Location, private authService: AuthService , private notificationService: NotificationService , private userService: UserService, private withdrawalService: WithdrawalService) {}
   userInfo!: UserInfo;
   withdrawal!: Withdrawal;  
   ngOnInit() {
@@ -65,7 +66,13 @@ export class WithdrawalComponent {
       next: (response: any) => {
         if (response.result_code === 1) {
           this.initForm();
+          this.notificationService.showSuccess('Rút tiền thành công');
+        } else {
+          this.notificationService.showError('Rút tiền thất bại');
         }
+      },
+      error: (error) => {
+        this.notificationService.showError('Rút tiền thất bại');
       }
     });
   }

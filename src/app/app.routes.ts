@@ -14,6 +14,7 @@ import { TransactionHistoryComponent } from './component/feature/home/transactio
 import { ProfileComponent } from './component/feature/home/profile/profile.component';
 import { AppInfoComponent } from './component/feature/home/app-info/app-info.component';
 import { NewsComponent } from './component/feature/home/news/news.component';
+import { AdminGuard } from './services/auth/auth.guard';
 import { IndexComponent } from './component/news/index.component';
 import { DownloadComponent } from './component/news/download/download.component';
 
@@ -90,6 +91,8 @@ export const routes: Routes = [
     {
         path: 'vinclub/admin',
         loadChildren: () => import('./component/feature/admin/admin.routes')
+          .then(m => m.adminRoutes),
+        canActivate: [AdminGuard]
           .then(m => m.adminRoutes)
     },
     {

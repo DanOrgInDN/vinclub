@@ -1,1 +1,15 @@
+<app-notification
+  [(show)]="showNotification"
+  [message]="notificationMessage"
+  [type]="notificationType">
+</app-notification>
+
+<app-alert
+  [(show)]="showAlert"
+  [message]="alertMessage"
+  [type]="alertType"
+  (confirm)="onAlertConfirm()"
+  (cancel)="onAlertCancel()">
+</app-alert>
+
 <router-outlet></router-outlet>

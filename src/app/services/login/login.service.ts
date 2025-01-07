@@ -31,4 +31,9 @@ export class LoginService {
   register(user: UserInfo) {
     return this.http.post(`${this.apiUrl}/signup/user`, user);
   }
+
+  
+  changePassword(data: any) {
+    return this.http.post(`${this.apiUrl}/change-password`, data);
+  }
 }
