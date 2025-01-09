@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://vinclubb.com/api/v1',
+    apiUrl: 'https://vinclubb.com/api/v1',
   };
