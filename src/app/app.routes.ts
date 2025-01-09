@@ -95,10 +95,6 @@ export const routes: Routes = [
         canActivate: [AdminGuard]
     },
     {
-        path: 'index',
-        component: IndexComponent
-    },
-    {
         path: 'download',
         component: DownloadComponent
     }

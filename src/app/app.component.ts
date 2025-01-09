@@ -59,12 +59,12 @@ export class AppComponent implements OnInit {
         next: (isExpired) => {
           if (isExpired === false) {
             this.authService.logout();
-            this.router.navigate(['/index']);
+            this.router.navigate(['/']);
           }
         },
         error: () => {
           this.authService.logout();
-          this.router.navigate(['/index']);
+          this.router.navigate(['/']);
         }
       });
     } else {
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
       if (fullUrl.includes('/register')) {
         return;
       }    
-      this.router.navigate(['/index']);
+      this.router.navigate(['/']);
     }
   }
 
