@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { NotificationComponent } from './shared/notification/notification.component';
 import { NotificationService } from './shared/notification/services/notification.service';
 import { AlertService } from './shared/alert/services/alert.service';
@@ -30,7 +30,8 @@ export class AppComponent implements OnInit {
     private notificationService: NotificationService,
     private alertService: AlertService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
   
   ngOnInit() {
@@ -51,21 +52,31 @@ export class AppComponent implements OnInit {
   }
 
   private checkInitialToken() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     if (this.authService.token) {  // Chỉ check khi có token
       this.authService.checkTokenExpired().subscribe({
         next: (isExpired) => {
           if (isExpired === false) {
             this.authService.logout();
-            this.router.navigate(['/login']);
+            this.router.navigate(['/index']);
           }
         },
         error: () => {
           this.authService.logout();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/index']);
         }
       });
     } else {
-      this.router.navigate(['/login']);
+      const fullUrl = window.location.href; 
+
+      if (fullUrl.includes('/login')) {
+        return;
+      }
+      if (fullUrl.includes('/register')) {
+        return;
+      }    
+      this.router.navigate(['/index']);
     }
   }
 
