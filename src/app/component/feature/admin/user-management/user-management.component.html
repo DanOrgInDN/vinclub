@@ -1,9 +1,9 @@
 <div class="user-management">
   <!-- Search Section -->
   <div class="search-section">
-    <input 
-      type="text" 
-      [(ngModel)]="searchTerm" 
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
       (ngModelChange)="searchUsers()"
       placeholder="Tìm kiếm theo số điện thoại..."
     >
@@ -30,7 +30,7 @@
           <td>{{user?.fullName}}</td>
           <td>{{user?.email}}</td>
           <td>{{user?.totalAmount || 0}} VND</td>
-          <td>{{user?.activated ? 'Kích hoạt' : 'Vô hiệu hóa'}}</td>
+          <td>{{user?.activated ? 'Kích hoạt' : 'Khoá'}}</td>
           <td>
             <button *ngIf="user.activated === false" (click)="activateUser(user.userId)" class="activate-btn">
               Kích hoạt
@@ -45,21 +45,21 @@
         </tr>
       </tbody>
     </table>
-    
+
     <!-- Pagination -->
     <div class="pagination">
-      <button 
+      <button
         [disabled]="currentPage === 1"
         (click)="changePage(currentPage - 1)"
         class="page-btn">
         <i class="fas fa-chevron-left"></i>
       </button>
-      
+
       <span class="page-info">
         Trang {{currentPage}} / {{totalPages}}
       </span>
-      
-      <button 
+
+      <button
         [disabled]="currentPage === totalPages"
         (click)="changePage(currentPage + 1)"
         class="page-btn">

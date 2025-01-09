@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../../services/login/login.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { NotificationService } from '../../../shared/notification/services/notification.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule,
     ReactiveFormsModule,
   ],
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private loginService: LoginService,
-     private router: Router,
+    private router: Router,
+    private notificationService: NotificationService,
     private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -74,9 +76,13 @@ export class LoginComponent implements OnInit {
       next: (response: any) => {
         if (response.result_code === 1) {
           this.router.navigate(['/vinclub']);
+          this.notificationService.showSuccess('Đăng nhập thành công');
+        } else {
+          this.notificationService.showError('Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
         }
       },
       error: (error) => {
+        this.notificationService.showError('Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
       }
     });
   }
@@ -88,11 +94,11 @@ export class LoginComponent implements OnInit {
       this.loginService.register(this.formRegister.value).subscribe({
         next: (response: any) => {
           if (response.result_code === 1) {
-        this.router.navigate(['/login']);
-       }
-      },
-      error: (error) => {
-      }
+            this.router.navigate(['/login']);
+          }
+        },
+        error: (error) => {
+        }
       });
     }
   }

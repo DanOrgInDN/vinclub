@@ -96,7 +96,7 @@ export class ProfileComponent implements OnInit {
             this.menuItems.unshift({
               icon: 'assets/icons/ca-nhan.png',
               label: 'Quản lý',
-              link: '/vinclub/admin'
+              link: '/vinclub/admin/deposit'
             });
           }
         }
