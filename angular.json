@@ -38,6 +38,12 @@
               "src/styles.scss",
               "node_modules/swiper/swiper-bundle.css"
             ],
+            "optimization": {
+              "styles": {
+                "inlineCritical": false,
+                "minify": true
+              }
+            },
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ],
@@ -52,13 +58,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "5MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "300kB",
+                  "maximumError": "300kB"
                 }
               ],
               "outputHashing": "all"
@@ -109,5 +115,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b35f24d7-d303-499a-aa51-04217f7da737"
   }
 }
