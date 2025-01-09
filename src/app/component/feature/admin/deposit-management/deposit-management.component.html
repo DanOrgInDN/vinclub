@@ -14,6 +14,8 @@
       <table>
         <thead>
           <tr>
+            <th>Tài khoản</th>
+            <th>Số điện thoại</th>
             <th>Tên tài khoản</th>
             <th>Số tài khoản</th>
             <th>Ngân hàng</th>
@@ -25,11 +27,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let deposit of deposits">
-            <td>{{deposit.accountName}}</td>
-            <td>{{deposit.accountNumber}}</td>
-            <td>{{deposit.bankName}}</td>
+            <td>{{deposit.username}}</td>
+            <td>{{deposit.phone}}</td>
+            <td>{{deposit.account_name}}</td>
+            <td>{{deposit.account_number}}</td>
+            <td>{{deposit.bank_name}}</td>
             <td>{{deposit.amount}} VND</td>
-            <td>{{deposit.createdDate | date:'dd/MM/yyyy HH:mm'}}</td>
+            <td>{{deposit.created_date | date:'dd/MM/yyyy HH:mm'}}</td>
             <td>{{deposit.status}}</td>
             <td>
               <button 
@@ -57,11 +61,8 @@
           class="page-btn">
           <i class="fas fa-chevron-left"></i>
         </button>
-        
-        <span class="page-info">
-          Trang {{currentPage}} / {{totalPages}}
-        </span>
-        
+
+        <span>Page {{currentPage}} of {{totalPages}}</span>
         <button 
           [disabled]="currentPage === totalPages"
           (click)="changePage(currentPage + 1)"

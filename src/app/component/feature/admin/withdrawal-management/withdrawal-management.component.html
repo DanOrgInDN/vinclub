@@ -14,8 +14,9 @@
       <table>
         <thead>
           <tr>
+            <th>Tài khoản</th>
+            <th>Số điện thoại</th>
             <th>Tên tài khoản</th>
-       
             <th>Ngân hàng</th>
             <th>Số tài khoản</th>
             <th>Số tiền</th>
@@ -26,11 +27,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let withdrawal of withdrawals">
-            <td>{{withdrawal.accountName}}</td>
-            <td>{{withdrawal.bankName}}</td>
-            <td>{{withdrawal.accountNumber}}</td>
+            <td>{{withdrawal.username}}</td>
+            <td>{{withdrawal.phone}}</td>
+            <td>{{withdrawal.account_name}}</td>
+            <td>{{withdrawal.bank_name}}</td>
+            <td>{{withdrawal.account_number}}</td>
             <td>{{withdrawal.amount}} VND</td>
-            <td>{{withdrawal.createdDate | date:'dd/MM/yyyy HH:mm'}}</td>
+            <td>{{withdrawal.created_date | date:'dd/MM/yyyy HH:mm'}}</td>
             <td>{{withdrawal.status}}</td>
             <td>
               <button 
@@ -62,11 +65,7 @@
             class="page-btn">
             <i class="fas fa-chevron-left"></i>
           </button>
-          
-          <span class="page-info">
-            Trang {{currentPage}} / {{totalPages}}
-          </span>
-          
+          <span>Page {{currentPage}} of {{totalPages}}</span>
           <button 
             [disabled]="currentPage === totalPages"
             (click)="changePage(currentPage + 1)"

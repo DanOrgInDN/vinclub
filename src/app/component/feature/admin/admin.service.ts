@@ -13,6 +13,10 @@ export class AdminService {
         return this.http.post(this.apiUrl + '/admin/user/all', data);
     }
 
+    searchUsers(data: any) {
+        return this.http.post(this.apiUrl + '/admin/user/search', data);
+    }
+
     activateUser(userId: string) {
         return this.http.patch(this.apiUrl + '/admin/activate/' + userId, {});
     }
@@ -22,7 +26,11 @@ export class AdminService {
     }
 
     getDepositsPending(data: any) {
-        return this.http.get(this.apiUrl + '/deposit/pending');
+        return this.http.get(this.apiUrl + '/deposit/pending', { params: data });
+    } 
+
+    searchDeposits(data: any) {
+        return this.http.get(this.apiUrl + '/deposit/search', { params: data });
     }
 
     approveDeposit(depositId: string) {
@@ -33,8 +41,12 @@ export class AdminService {
         return this.http.patch(this.apiUrl + '/deposit/reject/' + depositId, {});
     }
 
-    getWithdrawals() {
-        return this.http.get(this.apiUrl + '/withdraw/pending');
+    getWithdrawals(data: any) {
+        return this.http.get(this.apiUrl + '/withdraw/pending', { params: data });
+    }
+
+    searchWithdrawals(data: any) {
+        return this.http.get(this.apiUrl + '/withdraw/search', { params: data });
     }
 
     approveWithdrawal(withdrawalId: string) {

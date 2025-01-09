@@ -22,7 +22,7 @@
                     <input 
                         type="file" 
                         id="uploadAvatar" 
-                        accept="image/*" 
+                        accept=".jpg,.jpeg,.png"
                         (change)="onFileSelected($event)"
                         class="hidden-input">
                     <div class="phone-number">{{userInfo?.phone || 'Loading...'}}</div>

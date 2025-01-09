@@ -21,6 +21,7 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
   filteredDeposits: Recharge[] = [];
   currentPage = 1;
   pageSize = 10;
+  totalElements = 0;
   totalPages = 1;
   searchTerm: string = '';
   private searchSubject = new Subject<string>();
@@ -44,18 +45,18 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
 
   loadAllDeposits() {
     const data = {
-      page_number: this.currentPage,
-      page_size: this.pageSize
+      page: this.currentPage,
     }
     this.adminService.getDepositsPending(data).subscribe({
       next: (response: any) => {
         if (response.result_code === 1) {
-          this.allDeposits = response.result_data.content;
-          this.filteredDeposits = [...this.allDeposits];
-          this.updateDisplayedDeposits();
+          this.deposits = response.result_data.content;
+          this.totalElements = response.result_data.totalElements;
+          this.totalPages = response.result_data.totalPages;
         }
       },
-      error: (error: any) => {
+      error: (error) => {
+        // Handle error
       }
     });
   }
@@ -68,7 +69,7 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
         deposit.accountName.toLowerCase().includes(this.searchTerm.trim().toLowerCase())
       );
     }
-    
+
     this.totalPages = Math.ceil(this.filteredDeposits.length / this.pageSize);
     this.currentPage = 1;
     this.updateDisplayedDeposits();
@@ -81,12 +82,27 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
   }
 
   searchDeposits() {
-    this.searchSubject.next(this.searchTerm);
+    if (!this.searchTerm || this.searchTerm.trim() === '') {
+      this.loadAllDeposits();
+    } else {
+      const data = {
+        search_text: this.searchTerm,
+        page: this.currentPage,
+        size: this.pageSize,
+      }
+      this.adminService.searchDeposits(data).subscribe({
+        next: (response: any) => {
+          this.deposits = response.result_data.content;
+          this.totalPages = response.result_data.totalPages;
+          this.totalElements = response.result_data.total_records;
+        }
+      });
+    }
   }
 
   changePage(page: number) {
     this.currentPage = page;
-    this.updateDisplayedDeposits();
+    this.searchDeposits();
   }
 
   ngOnDestroy() {
@@ -94,9 +110,12 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
   }
 
   approveDeposit(id: string) {
-    this.adminService.approveDeposit(id).subscribe({
-      next: (response: any) => {
-        if (response.result_code === 1) {
+    this.alertService.show('Bạn có chắc chắn muốn phê duyệt giao dịch nạp tiền này?', 'warning');
+
+    const subscription = this.alertService.onConfirm$.subscribe(() => {
+      this.adminService.approveDeposit(id).subscribe({
+        next: (response: any) => {
+          if (response.result_code === 1) {
           this.loadAllDeposits();
           this.notificationService.showSuccess('Phê duyệt giao dịch thành công');
         } else {
@@ -104,8 +123,14 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
         }
       },
       error: (error) => {
-        this.notificationService.showError('Phê duyệt giao dịch thất bại');
-      }
+          this.notificationService.showError('Phê duyệt giao dịch thất bại');
+        }
+      });
+      subscription.unsubscribe();
+    });
+
+    this.alertService.onCancel$.subscribe(() => {
+      subscription.unsubscribe();
     });
   }
 
@@ -126,7 +151,7 @@ export class DepositManagementComponent implements OnInit, OnDestroy {
           this.notificationService.showError('Từ chối giao dịch thất bại');
         }
       });
-      
+
       subscription.unsubscribe();
     });
 

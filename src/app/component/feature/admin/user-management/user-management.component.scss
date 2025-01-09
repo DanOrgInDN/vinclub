@@ -91,6 +91,7 @@
           background: #fff;
           border-radius: 4px;
           cursor: pointer;
+          margin: 0 5px;
           
           &:disabled {
             opacity: 0.5;
@@ -99,6 +100,10 @@
           
           &:not(:disabled):hover {
             background: #f8f9fa;
+          }
+
+          i {
+            font-size: 14px;
           }
         }
         

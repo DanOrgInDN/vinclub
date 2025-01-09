@@ -7,6 +7,7 @@ import { AuthService } from '../../../../services/auth/auth.service';
 import { UserInfo } from '../../../../model/user.model';
 import { FileService } from '../../../../services/file/file.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../../../shared/notification/services/notification.service';
 
 interface MenuItem {
   icon: string;
@@ -31,7 +32,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private location: Location, private userService: UserService,
     private authService: AuthService,
-    private fileService: FileService, private router: Router) { }
+    private fileService: FileService, private router: Router,
+    private notificationService: NotificationService) { }
 
   userInfo!: UserInfo;
   avatarUrl!: string;
@@ -61,13 +63,34 @@ export class ProfileComponent implements OnInit {
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
+      // Kiểm tra định dạng file
+      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+      if (!allowedTypes.includes(file.type)) {
+        this.notificationService.showError('Chỉ chấp nhận file ảnh định dạng JPG, JPEG hoặc PNG');
+        return;
+      }
+
+      // Kiểm tra kích thước file (ví dụ: giới hạn 5MB)
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (file.size > maxSize) {
+        this.notificationService.showError('Kích thước file không được vượt quá 5MB');
+        return;
+      }
+
       // Xử lý upload avatar
-      console.log('Upload avatar:', file);
       const userId = this.authService.userId;
       this.fileService.uploadFile(file, userId).subscribe({
         next: (response: any) => {
-          this.avatarUrl = response.result_data.image_url;
-          window.location.reload();
+          if (response.result_code === 1) {
+            this.avatarUrl = response.result_data.image_url;
+            this.notificationService.showSuccess('Cập nhật ảnh đại diện thành công');
+            window.location.reload();
+          } else {
+            this.notificationService.showError('Cập nhật ảnh đại diện thất bại');
+          }
+        },
+        error: (error) => {
+          this.notificationService.showError('Cập nhật ảnh đại diện thất bại');
         }
       });
     }

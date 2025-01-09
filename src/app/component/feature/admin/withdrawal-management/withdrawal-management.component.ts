@@ -22,6 +22,7 @@ export class WithdrawalManagementComponent implements OnInit, OnDestroy {
   currentPage = 1;
   pageSize = 10;
   totalPages = 1;
+  totalElements = 0;
   searchTerm: string = '';
   private searchSubject = new Subject<string>();
 
@@ -43,13 +44,15 @@ export class WithdrawalManagementComponent implements OnInit, OnDestroy {
   }
 
   loadAllWithdrawals() {
-
-    this.adminService.getWithdrawals().subscribe({
+    const data = {  
+      page: this.currentPage,
+    }
+    this.adminService.getWithdrawals(data).subscribe({
       next: (response: any) => {
         if (response.result_code === 1) {
-          this.allWithdrawals = response.result_data.content;
-          this.filteredWithdrawals = [...this.allWithdrawals];
-          this.updateDisplayedWithdrawals();
+          this.withdrawals = response.result_data.content;
+          this.totalElements = response.result_data.totalElements;
+          this.totalPages = response.result_data.totalPages;
         }
       },
       error: (error: any) => {
@@ -78,12 +81,26 @@ export class WithdrawalManagementComponent implements OnInit, OnDestroy {
   }
 
   searchWithdrawals() {
-    this.searchSubject.next(this.searchTerm);
+    if (!this.searchTerm || this.searchTerm.trim() === '') {
+      this.loadAllWithdrawals();
+    } else {
+      const data = {
+        search_text: this.searchTerm,
+        page: this.currentPage,
+        size: this.pageSize,
+      }
+      this.adminService.searchWithdrawals(data).subscribe({
+        next: (response: any) => {
+          this.withdrawals = response.result_data.content;
+          this.totalPages = response.result_data.totalPages;
+        }
+      });
+    }
   }
 
   changePage(page: number) {
     this.currentPage = page;
-    this.updateDisplayedWithdrawals();
+    this.searchWithdrawals();
   }
 
   ngOnDestroy() {

@@ -18,8 +18,8 @@
           <th>Tài khoản</th>
           <th>Họ tên</th>
           <th>Email</th>
+          <th>Role</th>
           <th>Số dư</th>
-          <th>Trạng thái</th>
           <th>Thao tác</th>
         </tr>
       </thead>
@@ -29,8 +29,8 @@
           <td>{{user?.username}}</td>
           <td>{{user?.fullName}}</td>
           <td>{{user?.email}}</td>
+          <td>{{user?.roleName}}</td>
           <td>{{user?.totalAmount || 0}} VND</td>
-          <td>{{user?.activated ? 'Kích hoạt' : 'Khoá'}}</td>
           <td>
             <button *ngIf="user.activated === false" (click)="activateUser(user.userId)" class="activate-btn">
               Kích hoạt
@@ -48,18 +48,16 @@
 
     <!-- Pagination -->
     <div class="pagination">
-      <button
+      <button 
         [disabled]="currentPage === 1"
         (click)="changePage(currentPage - 1)"
         class="page-btn">
         <i class="fas fa-chevron-left"></i>
       </button>
 
-      <span class="page-info">
-        Trang {{currentPage}} / {{totalPages}}
-      </span>
+      <span>Page {{currentPage}} of {{totalPages}}</span>
 
-      <button
+      <button 
         [disabled]="currentPage === totalPages"
         (click)="changePage(currentPage + 1)"
         class="page-btn">
