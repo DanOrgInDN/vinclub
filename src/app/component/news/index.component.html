@@ -28,8 +28,16 @@
         <a class="header-main__start" rel="nofollow" href="/">
             <img src="/assets/images/logo/logo-vingroup.jpg" width="72" height="48" alt="vingroup">
         </a>
+
         <nav class="header-main__nav">
-            <ul class="menu-main">
+            <ul class="menu-main" [class.show]="isMenuOpen">
+                <div class="menu-header">
+                    <svg *ngIf="isMenuOpen" (click)="closeMenu()" viewBox="0 0 320 512" width="20" height="20" style="fill: rgb(0, 0, 0);">
+                        <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                    </svg>
+                    <img src="/assets/images/logo/logo-vinclub.jpg" width="100" height="100" alt="vinclub">
+                    <div></div>
+                </div>
                 <li class="menu-main__item is-active" data-scrollnav-target="section-event">
                     <a class="menu-main__link" href="#section-event">Giới thiệu</a>
                 </li>
@@ -57,9 +65,11 @@
                 <div class="dropdown-menu" role="menu" bis_skin_checked="1">
                     <div class="dropdown-content" bis_skin_checked="1">
                         <div class="dropdown-body" bis_skin_checked="1">
-                            <div id="registerLinkContainer" bis_skin_checked="1"><a href="/register" class="dropdown-item">Đăng
+                            <div id="registerLinkContainer" bis_skin_checked="1"><a href="/register"
+                                    class="dropdown-item">Đăng
                                     ký</a></div>
-                            <div id="loginLinkContainer" bis_skin_checked="1"><a href="/login" class="dropdown-item">Đăng
+                            <div id="loginLinkContainer" bis_skin_checked="1"><a href="/login"
+                                    class="dropdown-item">Đăng
                                     nhập</a></div>
                         </div>
                     </div>
@@ -69,7 +79,7 @@
         <a href="javascript:void(0);" class="header-main__logo">
             <img src="/assets/images/logo/logo-vinclub.jpg" width="72" height="48" alt="VinClub">
         </a>
-        <div class="header-main__end" bis_skin_checked="1">
+        <div class="header-main__end" bis_skin_checked="1" (click)="toggleMenu()">
             <button class="header-main__burger js-menu-trigger" role="button" aria-label="Menu">
                 <i class="ti ti-menu"></i>
             </button>
@@ -302,7 +312,8 @@
                         </article>
                     </div>
                 </div>
-                <div id="vinmec" class="tab-content" bis_skin_checked="1" style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
+                <div id="vinmec" class="tab-content" bis_skin_checked="1"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
                     <div class="tab-content__body" bis_skin_checked="1">
                         <article class="card-policy">
                             <div class="card-policy__image" bis_skin_checked="1">
@@ -351,7 +362,8 @@
 
                     </div>
                 </div>
-                <div id="vinhomes" class="tab-content" bis_skin_checked="1" style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
+                <div id="vinhomes" class="tab-content" bis_skin_checked="1"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
                     <div class="tab-content__body" bis_skin_checked="1">
                         <article class="card-policy">
                             <div class="card-policy__image" bis_skin_checked="1">
@@ -400,7 +412,8 @@
 
                     </div>
                 </div>
-                <div id="vinpearl" class="tab-content" bis_skin_checked="1" style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
+                <div id="vinpearl" class="tab-content" bis_skin_checked="1"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
                     <div class="tab-content__body" bis_skin_checked="1">
                         <article class="card-policy">
                             <div class="card-policy__image" bis_skin_checked="1">
@@ -449,7 +462,8 @@
 
                     </div>
                 </div>
-                <div id="vinschool" class="tab-content" bis_skin_checked="1" style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
+                <div id="vinschool" class="tab-content" bis_skin_checked="1"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
                     <div class="tab-content__body" bis_skin_checked="1">
                         <article class="card-policy">
                             <div class="card-policy__image" bis_skin_checked="1">
@@ -498,7 +512,8 @@
 
                     </div>
                 </div>
-                <div id="gsm" class="tab-content" bis_skin_checked="1" style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
+                <div id="gsm" class="tab-content" bis_skin_checked="1"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 20px); opacity: 1;">
                     <div class="tab-content__body" bis_skin_checked="1">
                         <article class="card-policy">
                             <div class="card-policy__image" bis_skin_checked="1">
@@ -613,7 +628,8 @@
                             <div class="step-line"></div>
                             <div class="step-item" [class.active]="activeStep === 1" (click)="setActiveStep(1)">
                                 <div class="step-number">1</div>
-                                <div class="step-text">Truy cập vào trang web VinClub và tìm phần dưới cùng lựa chọn thiết bị bạn đang sử dụng</div>
+                                <div class="step-text">Truy cập vào trang web VinClub và tìm phần dưới cùng lựa chọn
+                                    thiết bị bạn đang sử dụng</div>
                             </div>
                             <div class="step-item" [class.active]="activeStep === 2" (click)="setActiveStep(2)">
                                 <div class="step-number">2</div>
@@ -621,7 +637,8 @@
                             </div>
                             <div class="step-item" [class.active]="activeStep === 3" (click)="setActiveStep(3)">
                                 <div class="step-number">3</div>
-                                <div class="step-text">Nhập mã xác thực được gửi đến số điện thoại hoặc email vừa nhập</div>
+                                <div class="step-text">Nhập mã xác thực được gửi đến số điện thoại hoặc email vừa nhập
+                                </div>
                             </div>
                             <div class="step-item" [class.active]="activeStep === 4" (click)="setActiveStep(4)">
                                 <div class="step-number">4</div>
@@ -641,11 +658,13 @@
                             </div>
                             <div class="step-item" [class.active]="activeStep === 2" (click)="setActiveStep(2)">
                                 <div class="step-number">2</div>
-                                <div class="step-text">Bấm vào "Liên kết tài khoản thương hiệu" trong danh mục Cài đặt</div>
+                                <div class="step-text">Bấm vào "Liên kết tài khoản thương hiệu" trong danh mục Cài đặt
+                                </div>
                             </div>
                             <div class="step-item" [class.active]="activeStep === 3" (click)="setActiveStep(3)">
                                 <div class="step-number">3</div>
-                                <div class="step-text">Nhập email/số điện thoại đã từng đăng ký tài khoản tại các thương hiệu</div>
+                                <div class="step-text">Nhập email/số điện thoại đã từng đăng ký tài khoản tại các thương
+                                    hiệu</div>
                             </div>
                             <div class="step-item" [class.active]="activeStep === 4" (click)="setActiveStep(4)">
                                 <div class="step-number">4</div>
@@ -673,7 +692,8 @@
                     <div class="accordion-item" *ngFor="let item of faqItems; let i = index">
                         <div class="accordion-header" (click)="toggleAccordion(i)">
                             <p class="accordion-title">{{item.question}}</p>
-                            <i class="ti" [class.ti-plus]="activeAccordion !== i" [class.ti-minus]="activeAccordion === i"></i>
+                            <i class="ti" [class.ti-plus]="activeAccordion !== i"
+                                [class.ti-minus]="activeAccordion === i"></i>
                         </div>
                         <div class="accordion-content" [class.is-active]="activeAccordion === i">
                             <p [innerHTML]="item.answer"></p>
@@ -681,11 +701,9 @@
                     </div>
                 </div>
                 <div class="read-more-wrapper">
-                    <button type="button" 
-                            class="btn-read-more" 
-                            [class.expanded]="isExpanded"
-                            (click)="toggleReadMore()">
-                            <span class="read-more-text">{{isExpanded ? 'Thu gọn' : 'Xem thêm'}}</span>
+                    <button type="button" class="btn-read-more" [class.expanded]="isExpanded"
+                        (click)="toggleReadMore()">
+                        <span class="read-more-text">{{isExpanded ? 'Thu gọn' : 'Xem thêm'}}</span>
                         <i class="ti ti-chevron-down"></i>
                     </button>
                 </div>
