@@ -18,27 +18,27 @@
                 <!-- Register date -->
                 <div class="register-date">
                     <span>Ngày đăng ký tài khoản</span>
-                    <span>{{profileData.registerDate}}</span>
+                    <span>{{userInfo?.createDate | date:'dd/MM/yyyy HH:mm' }}</span>
                 </div>
 
                 <div class="info-section">
-                    <div class="user-info">{{profileData.fullName}} {{profileData.phone}}</div>
-                    <div class="user-info">Số điện thoại: {{profileData.phone}}</div>
-                    <div class="user-info">Số dư: {{profileData.balance}} VND</div>
+                    <div class="user-info">{{userInfo?.fullName}} {{userInfo?.phone}}</div>
+                    <div class="user-info">Số điện thoại: {{userInfo?.phone}}</div>
+                    <div class="user-info">Số dư: {{userInfo?.totalAmount}} VND</div>
                     
                     <table class="profit-table">
                         <tbody>
                             <tr>
                                 <td class="profit">Tổng lợi nhuận:</td>
-                                <td>{{profileData.totalProfit}} VND</td>
+                                <td> 0 VND</td>
                             </tr>
                             <tr>
                                 <td class="bonus">Tổng tiền thưởng:</td>
-                                <td>{{profileData.totalBonus}} VND</td>
+                                <td>0 VND</td>
                             </tr>
                             <tr>
                                 <td class="investment">Tổng vốn đầu tư:</td>
-                                <td>{{profileData.totalInvestment}} VND</td>
+                                <td>0 VND</td>
                             </tr>
                         </tbody>
                     </table>

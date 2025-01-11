@@ -10,4 +10,5 @@ export interface UserInfo {
     totalAmount: number;
     imageUrl: string;
     roleName: string;
+    createDate: string;
 }
