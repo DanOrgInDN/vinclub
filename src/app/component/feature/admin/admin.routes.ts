@@ -4,6 +4,7 @@ import { DepositManagementComponent } from './deposit-management/deposit-managem
 import { WithdrawalManagementComponent } from './withdrawal-management/withdrawal-management.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { ReferenceCodeComponent } from './reference-code/reference-code.component';
+import { UserMoneyManagementComponent } from './user-money-management/user-money-management.component';
 
 export const adminRoutes: Routes = [
   {
@@ -14,7 +15,9 @@ export const adminRoutes: Routes = [
       { path: 'withdrawal', component: WithdrawalManagementComponent },
       { path: 'users', component: UserManagementComponent },
       { path: 'reference-code', component: ReferenceCodeComponent },
-      { path: '', redirectTo: 'deposit', pathMatch: 'full' }
+      { path: 'amount', component: UserMoneyManagementComponent },
+      { path: '', redirectTo: 'deposit', pathMatch: 'full' },
+
     ]
   }
 ];

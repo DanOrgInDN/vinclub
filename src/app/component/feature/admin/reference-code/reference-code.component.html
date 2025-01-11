@@ -27,7 +27,7 @@
             <td>{{referenceCode?.username}}</td>
             <td>{{referenceCode?.phone}}</td>
             <td>{{referenceCode?.reference_code}}</td>
-            <td>{{referenceCode?.created_date}}</td>
+            <td>{{referenceCode?.created_date | date:'dd/MM/yyyy HH:mm'}}</td>
             <td>
 
 <!--              <button (click)="deleteRef(user.userId)" class="delete-btn">-->

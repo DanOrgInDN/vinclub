@@ -1,0 +1,57 @@
+<div class="user-management">
+    <!-- Add Money Section -->
+    <div class="money-section add-money">
+      <h3>Cộng Tiền người dùng</h3>
+      <div class="input-group">
+        <div class="input-row">
+          <label>Username:</label>
+          <input
+            type="text"
+            [(ngModel)]="addUsername"
+            placeholder="Nhập username..."
+            class="username-input"
+          >
+        </div>
+        <div class="input-row">
+          <label>Số tiền:</label>
+          <input
+            type="number"
+            [(ngModel)]="addAmount"
+            placeholder="Nhập số tiền..."
+            class="amount-input"
+          >
+        </div>
+        <div class="input-row">
+          <button (click)="addMoney()" class="action-btn add-btn">+ Thêm tiền</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Subtract Money Section -->
+    <div class="money-section subtract-money">
+      <h3>Trừ Tiền người dùng</h3>
+      <div class="input-group">
+        <div class="input-row">
+          <label>Username:</label>
+          <input
+            type="text"
+            [(ngModel)]="subtractUsername"
+            placeholder="Nhập username..."
+            class="username-input"
+          >
+        </div>
+        <div class="input-row">
+          <label>Số tiền:</label>
+          <input
+            type="number"
+            [(ngModel)]="subtractAmount"
+            placeholder="Nhập số tiền..."
+            class="amount-input"
+          >
+        </div>
+        <div class="input-row">
+          <button (click)="subtractMoney()" class="action-btn subtract-btn">- Trừ tiền</button>
+        </div>
+      </div>
+    </div>
+  </div>

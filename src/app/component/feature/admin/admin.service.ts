@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../enviroment/enviroment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AdminService {
     private apiUrl = environment.apiUrl;
-    constructor( private http: HttpClient ) { }
+    constructor(private http: HttpClient) { }
 
     getAllUsers(data: any) {
         return this.http.post(this.apiUrl + '/admin/user/all', data);
@@ -27,7 +27,7 @@ export class AdminService {
 
     getDepositsPending(data: any) {
         return this.http.get(this.apiUrl + '/deposit/pending', { params: data });
-    } 
+    }
 
     searchDeposits(data: any) {
         return this.http.get(this.apiUrl + '/deposit/search', { params: data });
@@ -65,7 +65,22 @@ export class AdminService {
         return this.http.get(this.apiUrl + '/admin/code/all', { params: data });
     }
 
-    searchReferenceCode(data: any){
+    searchReferenceCode(data: any) {
         return this.http.get(this.apiUrl + '/admin/search', { params: data });
     }
+
+    addFund(username: string, amount: number) {
+        return this.http.post(
+            this.apiUrl + '/admin/fund/add?username=' + (username) + '&amount=' + (amount),
+            {}
+        );
+    }
+
+    deductFund(username: string, amount: number) {
+        return this.http.post(
+            this.apiUrl + '/admin/fund/deduct?username=' + (username) + '&amount=' + (amount),
+            {}
+        );
+    }
+
 }
