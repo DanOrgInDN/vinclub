@@ -26,7 +26,9 @@ export class IndexComponent implements OnInit {
   private mainSwiper2: Swiper | null = null;
   activeStep = 1;
   activeAccordion: number | null = null;
+  isMenuOpen = false;
   faqItems: FaqItem[] = [
+
     {
       question: "1. Ai có thể trở thành thành viên của VinClub?",
       answer: "Đối tượng tham gia là quản lý cấp cao và đối tác chiến lược của Tập đoàn, không giới hạn về quốc tịch và việc tham gia VinClub không trái với pháp luật của nước sở tại"
@@ -336,6 +338,20 @@ export class IndexComponent implements OnInit {
 
   toggleReadMore() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+    if (this.isMenuOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+    document.body.classList.remove('menu-open');
   }
 
 

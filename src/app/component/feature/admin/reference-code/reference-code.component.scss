@@ -1,0 +1,150 @@
+.user-management {
+    border-radius: 8px;
+    padding: 20px;
+  
+    .search-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+  
+      input {
+        flex: 1;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+  
+      button {
+        padding: 8px 16px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+  
+        &:hover {
+          background: #0056b3;
+        }
+      }
+    }
+  
+    .table-container {
+      overflow-x: auto;
+      position: relative;
+      padding-bottom: 60px;
+  
+      table {
+        width: 100%;
+        border-collapse: collapse;
+  
+        th, td {
+          padding: 12px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+  
+        th {
+          background: #f8f9fa;
+          font-weight: 600;
+        }
+  
+        .activate-btn, .deactivate-btn, .delete-btn {
+          padding: 6px 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-right: 8px;
+          color: white;
+        }
+  
+        .activate-btn {
+          background: #28a745;
+          &:hover { background: #218838; }
+        }
+  
+        .deactivate-btn {
+          background: #ffc107;
+          &:hover { background: #e0a800; }
+        }
+  
+        .delete-btn {
+          background: #dc3545;
+          &:hover { background: #c82333; }
+        }
+      }
+  
+      .pagination {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        background: #fff;
+        border-top: 1px solid #eee;
+        
+        .page-btn {
+          padding: 6px 12px;
+          border: 1px solid #ddd;
+          background: #fff;
+          border-radius: 4px;
+          cursor: pointer;
+          margin: 0 5px;
+          
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+          
+          &:not(:disabled):hover {
+            background: #f8f9fa;
+          }
+
+          i {
+            font-size: 14px;
+          }
+        }
+        
+        .page-info {
+          margin: 0 15px;
+          font-size: 14px;
+          color: #666;
+        }
+      }
+    }
+  
+    @media (max-width: 768px) {
+      padding: 15px;
+  
+      .search-section {
+        flex-direction: column;
+        gap: 15px;
+  
+        input, button {
+          width: 100%;
+        }
+      }
+  
+      .table-container {
+        margin: 0 -15px;
+  
+        table {
+          th, td {
+            padding: 8px;
+            font-size: 14px;
+  
+            &:nth-child(n+4) {
+              display: none;
+            }
+          }
+  
+          .action-btn {
+            padding: 4px 8px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }

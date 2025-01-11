@@ -76,7 +76,6 @@ export class LoginComponent implements OnInit {
       next: (response: any) => {
         if (response.result_code === 1) {
           this.router.navigate(['/vinclub']);
-          this.notificationService.showSuccess('Đăng nhập thành công');
         } else {
           this.notificationService.showError('Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
         }

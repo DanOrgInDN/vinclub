@@ -56,4 +56,16 @@ export class AdminService {
     rejectWithdrawal(withdrawalId: string) {
         return this.http.patch(this.apiUrl + '/withdraw/reject/' + withdrawalId, {});
     }
+
+    createReferenceCode() {
+        return this.http.post(this.apiUrl + '/admin/code/create', {});
+    }
+
+    getReferenceCode(data: any) {
+        return this.http.get(this.apiUrl + '/admin/code/all', { params: data });
+    }
+
+    searchReferenceCode(data: any){
+        return this.http.get(this.apiUrl + '/admin/search', { params: data });
+    }
 }
