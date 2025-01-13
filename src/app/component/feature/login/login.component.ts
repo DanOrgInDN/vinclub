@@ -90,13 +90,17 @@ export class LoginComponent implements OnInit {
     if (this.formRegister.invalid) {
       return;
     } else {
+    console.log(this.formRegister.value);
       this.loginService.register(this.formRegister.value).subscribe({
         next: (response: any) => {
           if (response.result_code === 1) {
             this.router.navigate(['/login']);
+          } else {
+            this.notificationService.showError(response.result_data.msg);
           }
         },
         error: (error) => {
+          this.notificationService.showError('Đăng ký thất bại');
         }
       });
     }
