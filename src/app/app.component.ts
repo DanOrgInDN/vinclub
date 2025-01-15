@@ -76,6 +76,10 @@ export class AppComponent implements OnInit {
       if (fullUrl.includes('/register')) {
         return;
       }    
+
+      if (fullUrl.includes('/download')) {
+        return;
+      }   
       this.router.navigate(['/']);
     }
   }
