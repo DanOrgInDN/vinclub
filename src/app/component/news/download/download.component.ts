@@ -1,16 +1,18 @@
-import { isPlatformBrowser } from '@angular/common';
+import {isPlatformBrowser, NgIf} from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-download',
-  imports: [],
+    imports: [
+        NgIf
+    ],
   templateUrl: './download.component.html',
   styleUrl: '../../news/index.component.scss'
 })
 export class DownloadComponent {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
+  isMenuOpen = false;
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.initDropdown();
@@ -25,7 +27,7 @@ export class DownloadComponent {
 
   //   menuItems.forEach(item => {
   //     const link = item.querySelector('.menu-main__link');
-      
+
   //     // Skip if it's a download link
   //     if (link?.classList.contains('download-link')) {
   //       return;
@@ -33,18 +35,18 @@ export class DownloadComponent {
 
   //     link?.addEventListener('click', (e) => {
   //       e.preventDefault();
-        
+
   //       // Get target section id from href
   //       const href = link?.getAttribute('href');
-        
+
   //       if (href && href.startsWith('#')) {
   //         const targetId = href.substring(1);
   //         const targetSection = document.getElementById(targetId);
-          
+
   //         if (targetSection) {
   //           // Remove active class from all items
   //           menuItems.forEach(i => i.classList.remove('is-active'));
-            
+
   //           // Add active class to clicked item
   //           item.classList.add('is-active');
 
@@ -67,11 +69,11 @@ export class DownloadComponent {
   //     menuItems.forEach(item => {
   //       const targetId = item.getAttribute('data-scrollnav-target');
   //       const targetSection = document.getElementById(targetId || '');
-        
+
   //       if (targetSection) {
   //         const sectionTop = targetSection.offsetTop;
   //         const sectionBottom = sectionTop + targetSection.offsetHeight;
-          
+
   //         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
   //           menuItems.forEach(i => i.classList.remove('is-active'));
   //           item.classList.add('is-active');
@@ -100,22 +102,22 @@ export class DownloadComponent {
 
   private initTabs() {
     const tabItems = document.querySelectorAll('.tab-item');
-    
+
     tabItems.forEach(item => {
       const link = item.querySelector('.tab-link');
       link?.addEventListener('click', (e) => {
         e.preventDefault();
-        
+
         // Remove active class from all tabs
         tabItems.forEach(tab => tab.classList.remove('is-active'));
-        
+
         // Add active class to clicked tab
         item.classList.add('is-active');
-        
+
         // Hide all tab contents
         const allTabContents = document.querySelectorAll('.tab-content');
         allTabContents.forEach(content => content.classList.remove('is-active'));
-        
+
         // Show selected tab content
         const targetId = item.getAttribute('data-tab-target');
         const targetContent = document.getElementById(targetId || '');
@@ -124,5 +126,9 @@ export class DownloadComponent {
         }
       });
     });
+  }
+  closeMenu(): void {
+    this.isMenuOpen = false;
+    document.body.classList.remove('menu-open');
   }
 }

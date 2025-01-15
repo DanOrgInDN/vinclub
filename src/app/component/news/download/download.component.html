@@ -25,42 +25,53 @@
         <a class="header-main__start" rel="nofollow" href="/">
             <img src="/assets/images/logo/logo-vingroup.jpg" width="72" height="48" alt="vingroup">
         </a>
-        <nav class="header-main__nav">
-            <ul class="menu-main">
-                <li class="menu-main__item is-active" data-scrollnav-target="section-event">
-                    <a class="menu-main__link" href="/index">Giới thiệu</a>
-                </li>
-                <li class="menu-main__item" data-scrollnav-target="section-privileges">
-                    <a class="menu-main__link" href="/index">Đặc quyền &amp; Hạng thành viên</a>
-                </li>
-                <li class="menu-main__item" data-scrollnav-target="section-points">
-                    <a class="menu-main__link" href="/index">Chính sách</a>
-                </li>
-                <li class="menu-main__item" data-scrollnav-target="section-guide">
-                    <a class="menu-main__link" href="/index">Hướng dẫn đăng ký</a>
-                </li>
-                <li class="menu-main__item" data-scrollnav-target="section-faq">
-                    <a class="menu-main__link" href="/index">Câu hỏi thường gặp</a>
-                </li>
-                <li class="menu-main__item">
-                    <a class="menu-main__link download-link" href="/download">Tải xuống</a>
-                </li>
-            </ul>
-            <div class="dropdown dropdown-right" bis_skin_checked="1">
-                <button class="btn btn-language dropdown-trigger" type="button" aria-label="Change language">
-                    <span class="dropdown-trigger__text">Đăng nhập</span>
-                    <i class="ti ti-chevron-down dropdown-icon"></i>
-                </button>
-                <div class="dropdown-menu" role="menu" bis_skin_checked="1">
-                    <div class="dropdown-content" bis_skin_checked="1">
-                        <div class="dropdown-body" bis_skin_checked="1">
-                            <div id="registerLinkContainer" bis_skin_checked="1"><a href="#" class="dropdown-item">Đăng ký</a></div>
-                            <div id="loginLinkContainer" bis_skin_checked="1"><a href="#" class="dropdown-item">Đăng nhập</a></div>
-                        </div>
-                    </div>
-                </div>
+      <nav class="header-main__nav">
+        <ul class="menu-main" [class.show]="isMenuOpen">
+          <div class="menu-header">
+            <svg *ngIf="isMenuOpen" (click)="closeMenu()" viewBox="0 0 320 512" width="20" height="20" style="fill: rgb(0, 0, 0);">
+              <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+            </svg>
+            <img src="/assets/images/logo/logo-vinclub.jpg" width="100" height="100" alt="vinclub">
+            <div></div>
+          </div>
+          <li class="menu-main__item is-active" data-scrollnav-target="section-event">
+            <a class="menu-main__link" href="#section-event">Giới thiệu</a>
+          </li>
+          <li class="menu-main__item" data-scrollnav-target="section-privileges">
+            <a class="menu-main__link" href="#section-privileges">Đặc quyền &amp; Hạng thành viên</a>
+          </li>
+          <li class="menu-main__item" data-scrollnav-target="section-points">
+            <a class="menu-main__link" href="#section-points">Chính sách</a>
+          </li>
+          <li class="menu-main__item" data-scrollnav-target="section-guide">
+            <a class="menu-main__link" href="#section-guide">Hướng dẫn đăng ký</a>
+          </li>
+          <li class="menu-main__item" data-scrollnav-target="section-faq">
+            <a class="menu-main__link" href="/section-faq">Câu hỏi thường gặp</a>
+          </li>
+          <li class="menu-main__item">
+            <a class="menu-main__link download-link" href="/download">Tải xuống</a>
+          </li>
+        </ul>
+        <div class="dropdown dropdown-right">
+          <button class="btn btn-language dropdown-trigger" type="button" aria-label="Change language">
+            <span class="dropdown-trigger__text">Đăng nhập</span>
+            <i class="ti ti-chevron-down dropdown-icon"></i>
+          </button>
+          <div class="dropdown-menu" role="menu" bis_skin_checked="1">
+            <div class="dropdown-content" bis_skin_checked="1">
+              <div class="dropdown-body" bis_skin_checked="1">
+                <div id="registerLinkContainer" bis_skin_checked="1"><a href="/register"
+                                                                        class="dropdown-item">Đăng
+                  ký</a></div>
+                <div id="loginLinkContainer" bis_skin_checked="1"><a href="/login"
+                                                                     class="dropdown-item">Đăng
+                  nhập</a></div>
+              </div>
             </div>
-        </nav>
+          </div>
+        </div>
+      </nav>
         <a href="javascript:void(0);" class="header-main__logo">
             <img src="/assets/images/logo/logo-vinclub.jpg" width="72" height="48" alt="VinClub">
         </a>
@@ -85,10 +96,10 @@
                     </ul>
                     <img id="defaultImage" class="download-banner__qrcode" width="245" height="245" alt="Ứng dụng VinClub" src="/assets/images/qr.jpg">
                     <div class="download-banner__app" bis_skin_checked="1">
-                        <a href="#" id="iosLink" class="download-banner__app-item" rel="nofollow">
+                        <a href="https://www.dropbox.com/scl/fi/ovxmdm61jieca6mfq5see/VINCLUB.mobileconfig?rlkey=wdlv16aiww3pknua46ck4ebai&st=16arf0ln&dl=1" id="iosLink" class="download-banner__app-item" rel="nofollow">
                             <img src="/assets/images/appstore_2.svg" width="120" height="44" alt="Appstore">
                         </a>
-                        <a href="#" id="androidLink" class="download-banner__app-item" rel="nofollow">
+                        <a href="https://www.dropbox.com/scl/fi/fjr8nruv2ghmi480al2u5/Vinclub.apk?rlkey=ufnyg3obvq1l0c0pjz7n2a9px&st=8sy6nkhy&dl=1" id="androidLink" class="download-banner__app-item" rel="nofollow">
                             <img src="/assets/images/chplay.svg" width="118" height="44" alt="CHPlay">
                         </a>
                     </div>
@@ -145,10 +156,10 @@
                         </a>
                     </div>
                     <div class="footer-main__download" bis_skin_checked="1">
-                        <a href="https://download.nsns69.com/static/VINCLUB/lc2/VINCLUB.mobileconfig" class="application-item" bis_size="{&quot;x&quot;:1625,&quot;y&quot;:4375,&quot;w&quot;:120,&quot;h&quot;:44,&quot;abs_x&quot;:1625,&quot;abs_y&quot;:4375}">
+                        <a href="https://www.dropbox.com/scl/fi/ovxmdm61jieca6mfq5see/VINCLUB.mobileconfig?rlkey=wdlv16aiww3pknua46ck4ebai&st=16arf0ln&dl=1" class="application-item" bis_size="{&quot;x&quot;:1625,&quot;y&quot;:4375,&quot;w&quot;:120,&quot;h&quot;:44,&quot;abs_x&quot;:1625,&quot;abs_y&quot;:4375}">
                             <img src="/assets/images/appstore_2.svg" width="120" height="44" alt="Appstore" bis_size="{&quot;x&quot;:1625,&quot;y&quot;:4375,&quot;w&quot;:120,&quot;h&quot;:44,&quot;abs_x&quot;:1625,&quot;abs_y&quot;:4375}" bis_id="bn_kajc6ncif5nearcl1u0ujm">
                         </a>
-                        <a href="https://download.nsns69.com/static/VINCLUB/lc2/VINCLUB.apk" class="application-item" bis_size="{&quot;x&quot;:1753,&quot;y&quot;:4375,&quot;w&quot;:118,&quot;h&quot;:44,&quot;abs_x&quot;:1753,&quot;abs_y&quot;:4375}">
+                        <a href="https://www.dropbox.com/scl/fi/fjr8nruv2ghmi480al2u5/Vinclub.apk?rlkey=ufnyg3obvq1l0c0pjz7n2a9px&st=8sy6nkhy&dl=1" class="application-item" bis_size="{&quot;x&quot;:1753,&quot;y&quot;:4375,&quot;w&quot;:118,&quot;h&quot;:44,&quot;abs_x&quot;:1753,&quot;abs_y&quot;:4375}">
                             <img src="/assets/images/chplay.svg" width="118" height="44" alt="CHPlay" bis_size="{&quot;x&quot;:1753,&quot;y&quot;:4375,&quot;w&quot;:118,&quot;h&quot;:44,&quot;abs_x&quot;:1753,&quot;abs_y&quot;:4375}" bis_id="bn_a59ypxk3pahnorhqgmb32h">
                         </a>
                     </div>
