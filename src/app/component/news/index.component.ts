@@ -125,7 +125,7 @@ export class IndexComponent implements OnInit {
       question: "12. Tôi có thể tìm kiếm thông tin chính thức về VinClub ở đâu?",
       answer: `<p>Thành viên có thể cập nhật các thông tin chính thức và mới nhất về VinClub tại:</p>
       <ul>
-        <li>Website: <a href="https://vinclubsavings.com">VinClub</a></li>
+        <li>Website: <a href="https://vinclub68.com">VinClub</a></li>
         <li>Ứng dụng di động VinClub; hoặc</li>
         <li>Hotline: 1900-999-911.</li>
       </ul>`
